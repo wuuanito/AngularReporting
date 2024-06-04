@@ -1,0 +1,182 @@
+<mat-toolbar style="background-color: #01931c; color: white;">
+  <span>SOLICITUD DE MUESTRAS (OFICINA TECNICA)</span>
+  <span class="spacer"></span>
+</mat-toolbar>
+<br>
+<mat-form-field>
+  <mat-label>Filtro</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- ID Column -->
+    <ng-container matColumnDef="id_muestras">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row" (click)="selectRow(row)"> {{ row.id_muestras }} </td>
+    </ng-container>
+
+    <!-- Solicitante Column -->
+    <ng-container matColumnDef="solicitante">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Solicitante </th>
+      <td mat-cell *matCellDef="let row" (click)="selectRow(row)"> {{ row.solicitante }} </td>
+    </ng-container>
+
+    <!-- Nombre MP Column -->
+    <ng-container matColumnDef="nombre_mp">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre MP </th>
+      <td mat-cell *matCellDef="let row" (click)="selectRow(row)"> {{ row.nombre_mp }} </td>
+    </ng-container>
+
+
+
+    <!-- Proveedor Column -->
+    <ng-container matColumnDef="proveedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Proveedor </th>
+      <td mat-cell *matCellDef="let row" (click)="selectRow(row)"> {{ row.proveedor }} </td>
+    </ng-container>
+
+    <!-- Urgencia Column -->
+    <ng-container matColumnDef="urgencia">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Urgencia </th>
+      <td mat-cell *matCellDef="let row" (click)="selectRow(row)"> {{ row.urgencia }} </td>
+    </ng-container>
+
+    <!-- Fecha Column -->
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+      <td mat-cell *matCellDef="let row" (click)="selectRow(row)"> {{ row.fecha }} </td>
+    </ng-container>
+
+    <!-- Estado Column -->
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+      <td mat-cell *matCellDef="let row" (click)="selectRow(row)"> {{ row.estado }} </td>
+    </ng-container>
+
+    <!-- Código Alimento Column -->
+    <ng-container matColumnDef="codigo_articulo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Código Articulo </th>
+      <td mat-cell *matCellDef="let row" (click)="selectRow(row)"> {{ row.codigo_articulo }} </td>
+    </ng-container>
+
+    <!-- Comentarios Column -->
+    <ng-container matColumnDef="comentarios">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Comentarios </th>
+      <td mat-cell *matCellDef="let row" class="comment-cell" (click)="selectRow(row)"> {{ row.comentarios }} </td>
+    </ng-container>
+
+    <!-- Estado Almacén Column -->
+    <ng-container matColumnDef="estado_almacen">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado Almacén </th>
+      <td mat-cell *matCellDef="let row" (click)="selectRow(row)"> {{ row.estado_almacen }} </td>
+    </ng-container>
+
+    <!-- Definir las filas de la tabla -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)" [class.selected]="selectedRow === row" [ngClass]="{
+      'row-red': row.estado === 'No iniciado',
+      'row-yellow': row.estado === 'En curso',
+      'row-green': row.estado === 'Fin'
+    }"></tr>
+
+    <!-- Mostrar mensaje cuando no hay datos coincidentes -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="10">No hay datos que coincidan con el filtro "{{ input.value }}"</td>
+    </tr>
+  </table>
+
+  <!-- Paginador -->
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccionar página de usuarios"></mat-paginator>
+</div>
+<br>
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        NUEVA SOLICITUD DE MUESTRAS
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>arrow_downward</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="form-container responsive">
+      <form #form="ngForm" (ngSubmit)="submitForm(form)" class="form">
+        <div class="form-row">
+          <mat-form-field class="half-width">
+            <mat-label>Nombre MP</mat-label>
+            <input matInput name="nombre_mp" [(ngModel)]="formData.nombre_mp" required>
+          </mat-form-field>
+          <mat-form-field class="half-width">
+            <mat-label>Proveedor</mat-label>
+            <input matInput name="proveedor" [(ngModel)]="formData.proveedor" required>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field class="third-width">
+            <mat-label>Urgencia</mat-label>
+            <mat-select [(ngModel)]="formData.urgencia" name="urgencia" required>
+              <mat-option value="Alta">ALTA</mat-option>
+              <mat-option value="Media">MEDIA</mat-option>
+              <mat-option value="Baja">BAJA</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="third-width">
+            <mat-label>Fecha</mat-label>
+            <input matInput type="date" name="fecha" [(ngModel)]="formData.fecha" required readonly>
+          </mat-form-field>
+          <mat-form-field class="third-width">
+            <mat-label>Estado</mat-label>
+            <input matInput name="estado" [(ngModel)]="formData.estado" required>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field class="full-width">
+            <mat-label>Código Articulo</mat-label>
+            <input matInput name="codigo_articulo" [(ngModel)]="formData.codigo_articulo" required>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field class="full-width">
+            <mat-label>Comentarios</mat-label>
+            <textarea matInput name="comentarios" [(ngModel)]="formData.comentarios" required maxlength="255" rows="10"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit" class="submit-button">Guardar Solicitud</button>
+        </div>
+      </form>
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>
+<br>
+
+<div *ngIf="selectedRow" style="border: 1px solid #ccc; border-radius: 8px; padding: 16px; background-color: #f9f9f9; font-family: Arial, sans-serif;">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h3 style="margin-bottom: 10px;">Detalles de la muestra <strong>{{selectedRow.id_muestras}}</strong></h3>
+    <button mat-raised-button color="warn" (click)="toggleDetails()">Ocultar Detalles</button>
+
+    <button mat-button color="accent" (click)="downloadPDF()">Descargar PDF</button>
+  </div>
+  <div style="margin-bottom: 20px;">
+    <p><strong>Solicitante:</strong> {{ selectedRow.solicitante }}</p>
+    <p><strong>Nombre MP:</strong> {{ selectedRow.nombre_mp }}</p>
+    <p><strong>Lote:</strong> {{ selectedRow.lote }}</p>
+    <p><strong>Proveedor:</strong> {{ selectedRow.proveedor }}</p>
+    <p><strong>Urgencia:</strong> {{ selectedRow.urgencia }}</p>
+    <p><strong>Fecha:</strong> {{ selectedRow.fecha }}</p>
+    <p><strong>Estado:</strong> {{ selectedRow.estado }}</p>
+    <p><strong>Código Articulo:</strong> {{ selectedRow.codigo_articulo }}</p>
+    <p><strong>Comentarios:</strong> {{ selectedRow.comentarios }}</p>
+  </div>
+  <div style="text-align: center; border-top: 1px solid #ccc; padding-top: 16px;">
+    <h3 style="color: #2c3e50; margin-bottom: 8px;">PROCESO DE ALMACÉN</h3>
+    <p style="color: #27ae60; font-weight: bold; margin: 0;">{{ selectedRow.estado_almacen }}</p>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+mat-toolbar {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.content {
+  width: 100%;
+  max-width: 600px;
+}
+
+mat-card {
+  width: 100%;
+}
+
+.file-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.file-label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.file-input {
+  width: 100%;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}

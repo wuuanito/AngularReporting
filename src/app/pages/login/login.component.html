@@ -1,0 +1,38 @@
+<div class="parent">
+  <div class="container">
+    <div class="form-container" id="login-form">
+
+
+      <div class="top">
+        <img src="assets/logoVerti.png" class="logo"
+          alt="Logo">
+      </div>
+      <div class="loginwith">
+        <ul>
+          <li class="google-li"><i class="fa-brands fa-google"></i></li>
+          <li class="facebook-li"><i class="fa-brands fa-facebook"></i></li>
+          <li class="x-li"><i class="fa-brands fa-x-twitter"></i></li>
+        </ul>
+      </div>
+      <form>
+        <div class="row">
+          <input [(ngModel)]="loginObj.email" [ngModelOptions]="{standalone: true}" type="text" required placeholder="E-mail ">
+        </div>
+        <div class="row">
+          <input [(ngModel)]="loginObj.contrasena" [ngModelOptions]="{standalone: true}" type="password" required placeholder="Contraseña">
+        </div>
+        <button class="button-40" (click)="onLogin()">INICIAR</button>
+      </form>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+</div>
+
+

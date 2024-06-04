@@ -1,0 +1,90 @@
+<br>
+<h4>BOLSA DE HORAS</h4>
+<br>
+<div style="margin-bottom: 15px">
+
+</div>
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let proveedor of proveedores">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div style="text-transform: uppercase">
+          {{ proveedor.nombre_proveedor }}
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div style="padding: 16px">
+      <table mat-table class="larger-table">
+        <thead>
+          <tr>
+            <th mat-header-cell class="id-header">ID</th>
+            <th mat-header-cell class="date-header">Fecha</th>
+            <th mat-header-cell class="hours-header">Horas</th>
+            <th mat-header-cell class="description-header">Descripción</th>
+            <th mat-header-cell class="hours-header">Contabilizadas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container
+            *ngFor="let servicio of proveedor.servicios; let last = last"
+          >
+            <tr mat-row>
+              <td mat-cell class="id-cell">{{ servicio.id_informatica_bolsa_horas }}</td>
+              <td mat-cell class="date-cell">{{ servicio.fecha | date : "yyyy-MM-dd" }}</td>
+              <td mat-cell class="hours-cell">{{ servicio.horas }}</td>
+              <td mat-cell class="description-cell">
+                {{ servicio.descripcion | slice : 0 : 60 }}<br />
+                {{
+                  servicio.descripcion
+                    | slice : 60 : servicio.descripcion.length
+                }}
+              </td>
+              <td mat-cell class="hours-header">
+                <p>
+                  <mat-slide-toggle (change)="toggleHide(servicio.id_informatica_bolsa_horas, $event.checked)"></mat-slide-toggle>
+                </p>
+              </td>
+            </tr>
+            <tr *ngIf="!last" mat-row>
+              <td mat-cell [attr.colspan]="5">
+                <hr />
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+      <div class="sum-row">
+        <div class="sum-label">Total de horas:</div>
+        <div class="sum-value">{{ proveedor.sumatorioHoras }}</div>
+      </div>
+
+      <button mat-raised-button color="primary" (click)="toggleForm(proveedor)">
+        {{ proveedor.showForm ? "Ocultar formulario" : "Añadir registro" }}
+      </button>
+
+      <div *ngIf="proveedor.showForm">
+        <div style="margin-top: 20px;">
+          <form #form="ngForm" (ngSubmit)="guardarDatos(proveedor.id_proveedores)">
+            <mat-form-field >
+              <mat-label>Fecha</mat-label>
+              <input matInput type="date" name="fecha" [(ngModel)]="fecha" required>
+            </mat-form-field><br>
+
+            <mat-form-field >
+              <mat-label>Número de Horas</mat-label>
+              <input matInput type="number" name="numHoras" [(ngModel)]="numHoras" required min="0" max="23">
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-label>Descripción</mat-label>
+              <textarea matInput name="descripcion" [(ngModel)]="descripcion" required maxlength="255" rows="5"></textarea>
+            </mat-form-field>
+
+            <button mat-flat-button color="accent" type="submit">Guardar Horas</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,18 @@
+<div class="upload-container mat-elevation-z8">
+  <mat-toolbar color="primary">
+    <span>SOLICITUD A ALMACEN DE LA MUESTRA: {{id}}</span>
+  </mat-toolbar>
+  <div class="content">
+    <mat-card>
+      <mat-card-content>
+        <div class="file-input-container">
+          <label for="fileInput" class="file-label">Adjuntar fichero:</label>
+          <input type="file" id="fileInput" (change)="getFile($event)" class="file-input">
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="sendFile()">Enviar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

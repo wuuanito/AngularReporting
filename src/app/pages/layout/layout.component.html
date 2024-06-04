@@ -1,0 +1,78 @@
+<!-- layout.component.html -->
+<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700" style="background-color: #01931c;">
+  <div class="px-3 py-3 lg:px-5 lg:pl-3 flex items-center justify-between">
+    <div class="flex items-center">
+      <a class="flex ml-64 md:me-24">
+        <img src="assets/logo.png" alt="Logo" style="width: 303px;">
+      </a>
+    </div>
+    <div class="flex items-center justify-end rtl:justify-end">
+      <span class="mr-3">{{ username }}</span> <!-- Mostrar nombre de usuario -->
+      <span class="mr-3">({{ rol }})</span> <!-- Mostrar rol del usuario -->
+
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">Cerrar sesión</button> <!-- Añade el evento click para cerrar sesión -->
+      </mat-menu>
+    </div>
+
+  </div>
+</nav>
+
+<aside id="side_nav" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:border-gray-700" aria-label="Sidebar" style="background-color: #01931c; color: white;">
+  <div class="h-full px-3 pb-4 overflow-y-auto" style="background-color: #01931c;">
+    <ul class="space-y-2 font-medium">
+      <li>
+        <a routerLink="/layout/departamento/inicio" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-home"></i> INICIO</a>
+      </li>
+      <hr>
+      <h5>DEPARTAMENTOS</h5>
+      <li>
+        <a routerLink="/layout/departamento/dept-informatica/inicio-informatica" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> INFORMATICA</a>
+      </li>
+      <li>
+        <a routerLink="/layout/departamento/aviso-desarrollo" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> MANTENIMIENTO</a>
+      </li>
+      <li>
+        <a routerLink="/layout/departamento/dept-compras/inicio-compras" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> COMPRAS</a>
+      </li>
+      <li>
+        <a routerLink="/layout/departamento/dept-administracion/inicio-administracion" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> ADMINISTRACION</a>
+      </li>
+
+
+      <hr>
+      <hr>
+      <li>
+        <ng-container *ngIf="isUserRole('administrador')">
+          <a routerLink="/layout/muestras" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> SOLICITUD DE MUESTRAS</a>
+        </ng-container>
+        <ng-container *ngIf="isUserRole('oficina_tecnica')">
+          <a routerLink="/layout/muestras" class="text-decoration-none px-3 py-2 d-block">SOLICITUD DE MUESTRAS</a>
+        </ng-container>
+        <ng-container *ngIf="isUserRole('laboratorio')">
+          <a routerLink="/layout/muestras-calidad" class="text-decoration-none px-3 py-2 d-block">SOLICITUD DE MUESTRAS</a>
+        </ng-container>
+        <ng-container *ngIf="isUserRole('logistica')">
+          <a routerLink="/layout/muestras-logistica" class="text-decoration-none px-3 py-2 d-block">SOLICITUD DE MUESTRAS</a>
+        </ng-container>
+      </li>
+
+
+    </ul>
+  </div>
+</aside>
+
+
+
+<div class="p-4 sm:ml-64">
+  <div class="p-4 mt-14">
+
+
+
+    <router-outlet id="router"></router-outlet>
+  </div>
+</div>
+

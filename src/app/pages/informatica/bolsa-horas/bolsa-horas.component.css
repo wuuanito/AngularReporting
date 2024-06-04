@@ -1,0 +1,105 @@
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+/* Estilos para las celdas */
+.mat-cell {
+  padding: 16px; /* Ajusta el padding según sea necesario */
+  font-size: 18px; /* Ajusta el tamaño de texto */
+}
+
+/* Estilos para los encabezados */
+.mat-header-cell {
+  font-weight: bold;
+  font-size: 20px; /* Ajusta el tamaño de texto */
+  padding-bottom: 16px; /* Ajusta la separación entre el título y las características */
+}
+
+/* Estilos específicos para cada tipo de celda */
+.date-header, .date-cell {
+  width: 8%; /* Por ejemplo, puedes ajustar el ancho según sea necesario */
+  text-align: left;
+}
+
+.hours-header, .hours-cell {
+  width: 8%;
+  text-align: center;
+}
+
+.description-header, .description-cell {
+  width: 60%;
+  text-align: left;
+  padding-left: 50px; /* Agrega un poco de espacio a la izquierda para separar la descripción de las horas */
+}
+
+/* Estilos para hacer la tabla más grande */
+.larger-table {
+  width: 100%;
+}
+
+td.description-cell {
+  white-space: break-all;
+}
+
+/* Estilos para la fila de sumatorio */
+.sum-row {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.sum-label {
+  flex: 1;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 8px;
+}
+
+.sum-value {
+  font-weight: bold;
+}
+.form-title {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.save-button {
+  margin-top: 20px;
+  float: left;
+}
