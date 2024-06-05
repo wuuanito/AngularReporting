@@ -20,7 +20,6 @@ import { HostListener } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { data } from 'jquery';
 
 
 
