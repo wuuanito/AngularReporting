@@ -1,54 +1,23 @@
-/* Estilos CSS */
-body {
-  background: #01931c;
-}
+/* CSS para hacer el aside y el botón de hamburguesa responsivos */
 
-#side_nav {
-  background: #01931c;
-  min-width: 250px;
-  max-width: 250px;
-  transition: all 0.3s;
-}
-
-.content {
-  min-height: 100vh;
-  width: 100%;
-}
-
-hr.h-color {
-  background: #01931c;
-}
-
-.sidebar li.active {
-  border-radius: 8px;
-}
-
-.sidebar li.active a,
-.sidebar li.active a:hover {
-  color: #000;
-}
-
-.sidebar li a {
-  color: #fff;
-}
-
-.sidebar li:hover {
-  background-color: #3e3e3e;
-}
-
-.sidebar li:hover a {
-  color: white;
-}
-
-
-
-  #side_nav.active {
-    margin-left: 0;
+@media (max-width: 992px) {
+  .sidebar {
+    display: none; /* Ocultar el aside en dispositivos móviles y tablets */
   }
+}
 
+.sidebar-toggle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1041;
+}
 
+.sidebar-toggle .navbar-toggler {
+  background-color: transparent;
+  border: none;
+}
 
-
-
-
-
+.sidebar-toggle .navbar-toggler-icon {
+  background-color: #fff; /* Color del icono del botón de hamburguesa */
+}

@@ -23,23 +23,23 @@
 
 <aside id="side_nav" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:border-gray-700" aria-label="Sidebar" style="background-color: #01931c; color: white;">
   <div class="h-full px-3 pb-4 overflow-y-auto" style="background-color: #01931c;">
-    <ul class="space-y-2 font-medium">
+    <ul class="space-y-2 font-medium" style="color: white;">
       <li>
-        <a routerLink="/layout/departamento/inicio" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-home"></i> INICIO</a>
+        <a routerLink="/layout/departamento/inicio" style="color: white;" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-home"></i> INICIO</a>
       </li>
       <hr>
       <h5>DEPARTAMENTOS</h5>
       <li>
-        <a routerLink="/layout/departamento/dept-informatica/inicio-informatica" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> INFORMATICA</a>
+        <a routerLink="/layout/departamento/dept-informatica/inicio-informatica"style="color: white;" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> INFORMATICA</a>
       </li>
       <li>
-        <a routerLink="/layout/departamento/aviso-desarrollo" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> MANTENIMIENTO</a>
+        <a routerLink="/layout/departamento/aviso-desarrollo" style="color: white;" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> MANTENIMIENTO</a>
       </li>
       <li>
-        <a routerLink="/layout/departamento/dept-compras/inicio-compras" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> COMPRAS</a>
+        <a routerLink="/layout/departamento/dept-compras/inicio-compras" style="color: white;" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> COMPRAS</a>
       </li>
       <li>
-        <a routerLink="/layout/departamento/dept-administracion/inicio-administracion" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> ADMINISTRACION</a>
+        <a routerLink="/layout/departamento/dept-administracion/inicio-administracion" style="color: white;" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> ADMINISTRACION</a>
       </li>
 
 
@@ -47,16 +47,16 @@
       <hr>
       <li>
         <ng-container *ngIf="isUserRole('administrador')">
-          <a routerLink="/layout/muestras" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> SOLICITUD DE MUESTRAS</a>
+          <a routerLink="/layout/muestras" style="color: white;" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-comment"></i> SOLICITUD DE MUESTRAS</a>
         </ng-container>
         <ng-container *ngIf="isUserRole('oficina_tecnica')">
-          <a routerLink="/layout/muestras" class="text-decoration-none px-3 py-2 d-block">SOLICITUD DE MUESTRAS</a>
+          <a routerLink="/layout/muestras" style="color: white;" class="text-decoration-none px-3 py-2 d-block">SOLICITUD DE MUESTRAS</a>
         </ng-container>
         <ng-container *ngIf="isUserRole('laboratorio')">
-          <a routerLink="/layout/muestras-calidad" class="text-decoration-none px-3 py-2 d-block">SOLICITUD DE MUESTRAS</a>
+          <a routerLink="/layout/muestras-calidad" style="color: white;" class="text-decoration-none px-3 py-2 d-block">SOLICITUD DE MUESTRAS</a>
         </ng-container>
         <ng-container *ngIf="isUserRole('logistica')">
-          <a routerLink="/layout/muestras-logistica" class="text-decoration-none px-3 py-2 d-block">SOLICITUD DE MUESTRAS</a>
+          <a routerLink="/layout/muestras-logistica" style="color: white;" class="text-decoration-none px-3 py-2 d-block">SOLICITUD DE MUESTRAS</a>
         </ng-container>
       </li>
 

@@ -39,7 +39,7 @@ export class MuestrasLogisticaComponent {
   showDetails: boolean = true; // Controla la visibilidad de los detalles de la muestra
 
   displayedColumns: string[] = [
-    'id_solicitud_almacen', 'estado', 'id_muestra', 'accion','botones','solicitante','urgencia','fecha','estado_muestra'
+    'id_solicitud_almacen', 'estado', 'id_muestra', 'accion','botones','solicitante','urgencia','fecha'
   ];
     expandedElement: UserData | null = null;
 

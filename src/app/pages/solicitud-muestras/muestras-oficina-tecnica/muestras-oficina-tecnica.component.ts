@@ -19,18 +19,14 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import jsPDF from 'jspdf';
 
 export interface UserData {
-  id_muestras: string;
+  id_solicitud_muestras: string;
   solicitante: string;
-  nombre_mp: string;
-  proveedor: string;
-  urgencia: string;
+  comentario: string;
+  lote: string;
   fecha: string;
   estado: string;
-  codigo_articulo: string;
-  comentarios: string;
-  estado_almacen?: string; // Definición opcional para estado_almacen
-  hide?: number; // Definición opcional para hide
 }
+
 
 
 @Component({
@@ -44,25 +40,16 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
   showDetails: boolean = true; // Controla la visibilidad de los detalles de la muestra
 
   displayedColumns: string[] = [
-    'id_muestras', 'solicitante', 'nombre_mp',  'proveedor',
-    'urgencia', 'fecha', 'estado', 'codigo_articulo', 'comentarios',
+    'idsolicitud_muestras', 'solicitante', 'comentario', 'lote', 'fecha','estado'
   ];
+
     expandedElement: UserData | null = null;
 
   username: string | null = null;
   formData: any;
   selectedRow: any;
 
-  selectRow(row: any) {
-    this.selectedRow = row;
-    // Verifica si el estado del almacén está presente en la fila seleccionada
-    if ('estado_almacen' in row) {
-      this.selectedRow.estado_almacen = row.estado_almacen;
-    } else {
-      // Si no está presente, puedes asignar un valor predeterminado o dejarlo vacío según tu lógica
-      this.selectedRow.estado_almacen = 'No disponible';
-    }
-  }
+
 
   toggleSubRow(row: UserData) {
     this.selectedRow = this.selectedRow === row ? null : row;
@@ -100,7 +87,7 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
 
 
   ngOnInit() {
-    this.getMuestrasOficinaTecnica();
+    this.getMuestras();
 
   }
 
@@ -127,8 +114,9 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
   toggleDetails() {
     this.selectedRow = null; // Esto oculta los detalles al hacer clic en "Ocultar Detalles"
   }
-  getMuestrasOficinaTecnica() {
-    this.muestras.getMuestras().subscribe(
+
+  getMuestras() {
+    this.muestras.getSolicitudMuestras().subscribe(
       (data: UserData[]) => {
         // Asigna los datos recibidos al origen de datos de la tabla
         this.dataSource.data = data;

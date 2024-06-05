@@ -30,4 +30,8 @@ export class MuestrasService {
     const url = `http://localhost:3000/${filename}`;
     window.open(url, '_blank');
   }
+
+  getSolicitudMuestras() : Observable<any[]>{
+    return this.httpclient.get<any[]>('http://localhost:3000/muestras/solicitudmuestras');
+  }
 }
