@@ -15,9 +15,168 @@
   overflow-x: auto; /* Permite el desplazamiento horizontal */
 }
 
+
 .sticky-col {
   position: sticky;
   left: 0;
   z-index: 1;
   background-color: #fff; /* Fondo blanco para mantener la legibilidad */
+}
+/* Estilos base */
+.detalle-muestra {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.detalle-muestra h2 {
+  font-size: 1.6em;
+  color: #333333;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.detalle-muestra p {
+  font-size: 1.2em;
+  color: #666666;
+  margin-bottom: 8px;
+}
+
+.detalle-muestra p:last-child {
+  margin-bottom: 0;
+}
+.row-pending {
+  background-color: #ffea65; /* Amarillo suave */
+}
+
+.row-in-progress {
+  background-color: #6fc9e9; /* Azul claro */
+}
+
+.row-completed {
+  background-color: #28a745; /* Verde oscuro */
+}
+
+.selected-row {
+  border: 2px solid red; /* Cambia el grosor y el estilo del borde según tus preferencias */
+}
+
+/* Media queries para hacer responsive */
+@media screen and (max-width: 768px) {
+  .detalle-muestra {
+    padding: 15px;
+    margin-top: 15px;
+  }
+
+  .detalle-muestra h2 {
+    font-size: 1.4em;
+  }
+
+  .detalle-muestra p {
+    font-size: 1em;
+  }
+}
+
+
+/* Estilos para el formulario dentro del mat-accordion */
+
+.mat-expansion-panel-content {
+  background-color: #28a745; /* Color de fondo */
+}
+
+.mat-expansion-panel-header {
+
+  color: black;
+  /* Color del texto del encabezado */
+  font-weight: bold; /* Fuente en negrita */
+}
+
+.mat-panel-title {
+  font-size: 18px; /* Tamaño de fuente del título */
+
+}
+
+.mat-panel-description {
+  display: none; /* Oculta la descripción */
+
+}
+
+.form-container {
+  padding: 20px; /* Espaciado interno */
+  background-color: rgb(255, 255, 255);
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px; /* Espaciado entre filas */
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end; /* Alineación a la derecha */
+  margin-top: 20px; /* Espaciado superior */
+}
+
+.form-actions .submit-button {
+  background-color: #003366; /* Color de fondo del botón */
+  color: #ffffff; /* Color del texto del botón */
+  font-weight: bold; /* Fuente en negrita */
+}
+
+/* Estilos para los campos de entrada */
+.mat-form-field {
+  width: 100%; /* Ancho completo */
+  margin-right: 15px; /* Margen derecho */
+}
+
+/* Estilos para los campos de entrada de ancho medio */
+.half-width {
+  width: calc(50% - 7.5px); /* Ancho del 50% menos el margen */
+}
+
+/* Estilos para los campos de entrada de ancho tercio */
+.third-width {
+  width: calc(33.33% - 7.5px); /* Ancho del 33.33% menos el margen */
+}
+
+/* Estilos para los campos de entrada de ancho completo */
+.full-width {
+  width: 100%; /* Ancho completo */
+}
+
+/* Estilo para textarea */
+textarea.mat-input-element {
+  resize: vertical; /* Permitir redimensionar verticalmente */
+}
+
+/* Estilo para el ícono de flecha */
+mat-icon {
+  vertical-align: middle; /* Alineación vertical */
+}
+
+/* Estilos responsivos */
+
+@media screen and (max-width: 600px) {
+  .form-row {
+    flex-direction: column; /* Cambia la dirección a columna */
+  }
+
+  .form-actions {
+    justify-content: center; /* Alinea al centro */
+  }
+
+  .mat-form-field {
+    width: 100%; /* Ancho completo */
+    margin-right: 0; /* Elimina el margen derecho */
+  }
+
+  .half-width,
+  .third-width {
+    width: 100%; /* Ancho completo */
+  }
 }

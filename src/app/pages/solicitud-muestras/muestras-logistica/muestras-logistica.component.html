@@ -80,9 +80,9 @@
     <!-- Definir las filas de la tabla -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
-      'row-red': row.estado === 'No iniciado',
-      'row-yellow': row.estado === 'En curso',
-      'row-green': row.estado === 'Fin'
+      'row-red': row.estado === 'Pendiente',
+      'row-yellow': row.estado === 'En proceso',
+      'row-green': row.estado === 'Completado'
     }"></tr>
 
     <!-- Mostrar mensaje cuando no hay datos coincidentes -->

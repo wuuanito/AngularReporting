@@ -40,7 +40,7 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
   showDetails: boolean = true; // Controla la visibilidad de los detalles de la muestra
 
   displayedColumns: string[] = [
-    'idsolicitud_muestras', 'solicitante', 'comentario', 'lote', 'fecha','estado'
+    'idsolicitud_muestras', 'solicitante','nombre','cod_producto', 'lote', 'fecha','estado'
   ];
 
     expandedElement: UserData | null = null;
@@ -49,13 +49,25 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
   formData: any;
   selectedRow: any;
 
+  selectRow(row: any) {
+    if (this.selectedRow === row) {
+      this.selectedRow = null; // Si la fila ya está seleccionada, deseleccionarla
+    } else {
+      this.selectedRow = row; // Si la fila no está seleccionada, seleccionarla
+    }
+  }
+
 
 
   toggleSubRow(row: UserData) {
     this.selectedRow = this.selectedRow === row ? null : row;
   }
-  toggleRow(row: any) {
+
+  toggleRow(row: any): void {
     this.selectedRow = this.selectedRow === row ? null : row;
+  }
+  isSelected(row: any): boolean {
+    return this.selectedRow === row;
   }
   isExpansionDetailRow = (index: number, row: any) => this.selectedRow === row;
 
@@ -68,13 +80,15 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
       // Inicializa formData después de establecer el valor de username
       this.formData = {
         solicitante: this.username,
-        nombre_mp: '',
-        proveedor: '',
-        urgencia: '',
+        nombre:'',
+        cod_producto:'',
+        lote:'',
         fecha: this.getCurrentDate(),
-        estado: 'No iniciado',
-        codigo_articulo: '',
-        comentarios: '',
+        estado: 'Pendiente',
+        comentario: '',
+        hide: 0,
+        departamento:''
+
 
       };
     }
