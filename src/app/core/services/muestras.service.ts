@@ -24,7 +24,7 @@ export class MuestrasService {
   }
 
   sendPost(body:FormData):Observable<any>{
-    return this.httpclient.post<any[]>('http://localhost:3000/muestras/subir', body);
+    return this.httpclient.put<any[]>('http://localhost:3000/muestras/subir', body);
   }
   downloadFile(filename: string) {
     const url = `http://localhost:3000/${filename}`;
@@ -33,5 +33,14 @@ export class MuestrasService {
 
   getSolicitudMuestras() : Observable<any[]>{
     return this.httpclient.get<any[]>('http://localhost:3000/muestras/solicitudmuestras');
+  }
+  getSolicitudMuestrasCalidad() : Observable<any[]>{
+    return this.httpclient.get<any[]>('http://localhost:3000/muestras/solicitudmuestrascalidad');
+  }
+  getSolicitudMuestrasLogistica() : Observable<any[]>{
+    return this.httpclient.get<any[]>('http://localhost:3000/muestras/solicitudmuestraslogistica');
+  }
+  updateEstadoAlmacenProcesando(body: any): Observable<any> {
+    return this.httpclient.put<any>('http://localhost:3000/muestras/actualizarestadoalmacenProcesando', body);
   }
 }

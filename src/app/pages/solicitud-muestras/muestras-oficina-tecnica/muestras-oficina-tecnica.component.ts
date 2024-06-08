@@ -152,9 +152,9 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
         // Éxito: muestra un mensaje de éxito
         this.snackBar.open('La muestra se ha agregado correctamente.', 'Cerrar', {
           duration: 3000,
-          verticalPosition: 'top'
-        });
+          verticalPosition: 'top',
 
+        });
 
 
       },
@@ -176,8 +176,9 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
         duration: 3000,
         verticalPosition: 'top'
       });
+      window.location.reload();
+
     });
-    window.location.reload();
   }
   downloadPDF() {
     if (!this.selectedRow) return;
@@ -185,6 +186,7 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
     const doc = new jsPDF();
     const logo = '/assets/logo.png'; // Reemplaza con tu imagen en base64
 
+    const fileName = 'Solicitud Muestra Nº ' + this.selectedRow.idsolicitud_muestras + '.pdf';
 
     doc.addImage(logo, 'PNG', 10, 10, 60, 20); // x, y, width, height
     doc.setFontSize(20);
@@ -195,15 +197,14 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
      // Detalles
      doc.setFontSize(12);
      const details = [
-      ['ID', this.selectedRow.id_muestras],
-      ['Solicitante', this.selectedRow.solicitante],
-      ['Nombre MP', this.selectedRow.nombre_mp],
-      ['Proveedor', this.selectedRow.proveedor],
-      ['Urgencia', this.selectedRow.urgencia],
-      ['Fecha', this.selectedRow.fecha],
-      ['Estado', this.selectedRow.estado],
-      ['Código Articulo', this.selectedRow.codigo_articulo],
-      ['Comentarios', this.selectedRow.comentarios]
+      ['ID', this.selectedRow.idsolicitud_muestras],
+      ['SOLICITANTE', this.selectedRow.solicitante],
+      ['NOMBRE ', this.selectedRow.nombre],
+      ['CODIGO PRODUCTO', this.selectedRow.cod_producto],
+      ['LOTE', this.selectedRow.lote],
+      ['FECHA', this.selectedRow.fecha],
+      ['ESTADO', this.selectedRow.estado],
+      ['COMENTARIOS', this.selectedRow.comentario]
     ];
 
     (doc as any).autoTable({
@@ -228,6 +229,6 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
     });
 
     // Guardar el PDF
-    doc.save('detalles.pdf');
+    doc.save(fileName);
   }
 }

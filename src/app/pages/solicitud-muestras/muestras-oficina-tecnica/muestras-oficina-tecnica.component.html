@@ -115,7 +115,7 @@
         <div class="form-row">
           <mat-form-field class="half-width">
             <mat-label>DEPARTAMENTO</mat-label>
-            <mat-select name="departamento" [(ngModel)]="formData.opcion" required>
+            <mat-select name="departamento" [(ngModel)]="formData.departamento" required>
               <mat-option value="logistica">LOGISTICA</mat-option>
               <mat-option value="calidad">CALIDAD/LABORATORIO</mat-option>
             </mat-select>
@@ -138,13 +138,20 @@
 </mat-accordion>
 
 <br>
-
 <div *ngIf="selectedRow" class="detalle-muestra">
-  <h2>Detalles de la muestra</h2>
-  <p>ID: {{ selectedRow.idsolicitud_muestras }}</p>
-  <p>Solicitante: {{ selectedRow.solicitante }}</p>
-  <p>Comentario: {{ selectedRow.comentario }}</p>
-  <p>Lote: {{ selectedRow.lote }}</p>
-  <p>Fecha: {{ selectedRow.fecha | date:'dd/MM/yyyy' }}</p>
-  <p>Estado: {{ selectedRow.estado }}</p>
+  <h2 class="titulo">Detalles de la muestra: {{ selectedRow.idsolicitud_muestras }}</h2>
+  <div class="botones">
+    <button class="boton-pdf" (click)="downloadPDF()">
+      Exportar a PDF <mat-icon>picture_as_pdf</mat-icon>
+    </button>
+   
+  </div>
+  <div class="info">
+    <p><strong>Solicitante:</strong> {{ selectedRow.solicitante }}</p>
+    <p><strong>Comentario:</strong> {{ selectedRow.comentario }}</p>
+    <p><strong>Lote:</strong> {{ selectedRow.lote }}</p>
+    <p><strong>Fecha:</strong> {{ selectedRow.fecha | date:'dd/MM/yyyy' }}</p>
+    <p><strong>Estado:</strong> {{ selectedRow.estado }}</p>
+  </div>
 </div>
+

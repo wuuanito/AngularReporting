@@ -17,6 +17,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { SharedService } from '../../../core/services/servicio-compartido.service';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card'; // Importar MatCardModule
 
 import jsPDF from 'jspdf';
 
@@ -37,41 +38,49 @@ export interface UserData {
 @Component({
   selector: 'app-muestras-calidad',
   standalone: true,
-  imports: [ MatToolbarModule, MatPaginatorModule, MatSortModule, MatTableModule, MatInputModule, MatFormFieldModule, MatExpansionModule, MatIconModule, MatSelectModule, MatDividerModule, MatButtonModule, CommonModule, MatSelectModule, FormsModule, MatGridListModule,MatCheckboxModule],
+  imports: [ MatToolbarModule,MatCardModule, MatPaginatorModule, MatSortModule, MatTableModule, MatInputModule, MatFormFieldModule, MatExpansionModule, MatIconModule, MatSelectModule, MatDividerModule, MatButtonModule, CommonModule, MatSelectModule, FormsModule, MatGridListModule,MatCheckboxModule],
   templateUrl: './muestras-calidad.component.html',
   styleUrl: './muestras-calidad.component.css'
 })
 export class MuestrasCalidadComponent {
 
-
   showDetails: boolean = true; // Controla la visibilidad de los detalles de la muestra
 
   displayedColumns: string[] = [
-    'id_muestras', 'solicitante', 'nombre_mp',  'proveedor',
-    'urgencia', 'fecha', 'estado', 'codigo_articulo', 'comentarios','almacen','crearAlmacen'
+    'idsolicitud_muestras', 'solicitante','nombre','cod_producto', 'lote', 'fecha','estado','estado_almacen'
   ];
+
     expandedElement: UserData | null = null;
 
   username: string | null = null;
   formData: any;
   selectedRow: any;
+  private fileTmp: any;
+  id: string | null = null; // Variable para almacenar el ID de la fila seleccionada
+  selectedFileName: string = '';
+
 
   selectRow(row: any) {
-    this.selectedRow = row;
-    // Verifica si el estado del almacén está presente en la fila seleccionada
-    if ('estado_almacen' in row) {
-      this.selectedRow.estado_almacen = row.estado_almacen;
+    if (this.selectedRow === row) {
+      this.selectedRow = null; // Si la fila ya está seleccionada, deseleccionarla
     } else {
-      // Si no está presente, puedes asignar un valor predeterminado o dejarlo vacío según tu lógica
-      this.selectedRow.estado_almacen = 'No disponible';
+      this.selectedRow = row; // Si la fila no está seleccionada, seleccionarla
+      this.id = row.idsolicitud_muestras; // Asignar el ID de la fila seleccionada
+
     }
   }
+
+
 
   toggleSubRow(row: UserData) {
     this.selectedRow = this.selectedRow === row ? null : row;
   }
-  toggleRow(row: any) {
+
+  toggleRow(row: any): void {
     this.selectedRow = this.selectedRow === row ? null : row;
+  }
+  isSelected(row: any): boolean {
+    return this.selectedRow === row;
   }
   isExpansionDetailRow = (index: number, row: any) => this.selectedRow === row;
 
@@ -84,13 +93,15 @@ export class MuestrasCalidadComponent {
       // Inicializa formData después de establecer el valor de username
       this.formData = {
         solicitante: this.username,
-        nombre_mp: '',
-        proveedor: '',
-        urgencia: '',
+        nombre:'',
+        cod_producto:'',
+        lote:'',
         fecha: this.getCurrentDate(),
-        estado: 'No iniciado',
-        codigo_articulo: '',
-        comentarios: '',
+        estado: 'Pendiente',
+        comentario: '',
+        hide: 0,
+        departamento:''
+
 
       };
     }
@@ -103,7 +114,7 @@ export class MuestrasCalidadComponent {
 
 
   ngOnInit() {
-    this.getMuestrasOficinaTecnica();
+    this.getMuestras();
 
   }
 
@@ -130,8 +141,9 @@ export class MuestrasCalidadComponent {
   toggleDetails() {
     this.selectedRow = null; // Esto oculta los detalles al hacer clic en "Ocultar Detalles"
   }
-  getMuestrasOficinaTecnica() {
-    this.muestras.getMuestras().subscribe(
+
+  getMuestras() {
+    this.muestras.getSolicitudMuestrasCalidad().subscribe(
       (data: UserData[]) => {
         // Asigna los datos recibidos al origen de datos de la tabla
         this.dataSource.data = data;
@@ -153,9 +165,9 @@ export class MuestrasCalidadComponent {
         // Éxito: muestra un mensaje de éxito
         this.snackBar.open('La muestra se ha agregado correctamente.', 'Cerrar', {
           duration: 3000,
-          verticalPosition: 'top'
-        });
+          verticalPosition: 'top',
 
+        });
 
 
       },
@@ -177,8 +189,9 @@ export class MuestrasCalidadComponent {
         duration: 3000,
         verticalPosition: 'top'
       });
+      window.location.reload();
+
     });
-    window.location.reload();
   }
   downloadPDF() {
     if (!this.selectedRow) return;
@@ -186,6 +199,7 @@ export class MuestrasCalidadComponent {
     const doc = new jsPDF();
     const logo = '/assets/logo.png'; // Reemplaza con tu imagen en base64
 
+    const fileName = 'Solicitud Muestra Nº ' + this.selectedRow.idsolicitud_muestras + '.pdf';
 
     doc.addImage(logo, 'PNG', 10, 10, 60, 20); // x, y, width, height
     doc.setFontSize(20);
@@ -196,15 +210,15 @@ export class MuestrasCalidadComponent {
      // Detalles
      doc.setFontSize(12);
      const details = [
-      ['ID', this.selectedRow.id_muestras],
-      ['Solicitante', this.selectedRow.solicitante],
-      ['Nombre MP', this.selectedRow.nombre_mp],
-      ['Proveedor', this.selectedRow.proveedor],
-      ['Urgencia', this.selectedRow.urgencia],
-      ['Fecha', this.selectedRow.fecha],
-      ['Estado', this.selectedRow.estado],
-      ['Código Articulo', this.selectedRow.codigo_articulo],
-      ['Comentarios', this.selectedRow.comentarios]
+      ['ID', this.selectedRow.idsolicitud_muestras],
+      ['SOLICITANTE', this.selectedRow.solicitante],
+      ['NOMBRE ', this.selectedRow.nombre],
+      ['CODIGO PRODUCTO', this.selectedRow.cod_producto],
+      ['LOTE', this.selectedRow.lote],
+      ['FECHA', this.selectedRow.fecha],
+      ['ESTADO', this.selectedRow.estado],
+      ['ESTADO ALMACEN', this.selectedRow.estado_almacen],
+      ['COMENTARIOS', this.selectedRow.comentario]
     ];
 
     (doc as any).autoTable({
@@ -229,28 +243,46 @@ export class MuestrasCalidadComponent {
     });
 
     // Guardar el PDF
-    doc.save('detalles.pdf');
+    doc.save(fileName);
   }
-  openWarehouseRequestForm(): void {
-    if (!this.selectedRow) {
-      console.error('No se ha seleccionado ninguna fila');
-      return;
+  getFile($event: Event): void {
+    const input = $event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      console.log(file);
+      this.fileTmp = {
+        fileRaw: file,
+        fileName: file.name
+      };
+      this.selectedFileName = file.name;
     }
-
-    const id = this.selectedRow.id_muestras; // Obtener el ID de la fila seleccionada
-    const url = `/formulario_logistica?id=${id}`;
-    const windowWidth = 700; // Ancho de la ventana emergente
-    const windowHeight = 700; // Altura de la ventana emergente
-    const windowFeatures = `resizable,scrollbars,status,width=${windowWidth},height=${windowHeight}`;
-
-    // Calcular las coordenadas para centrar la ventana emergente en función del tamaño de la pantalla
-    const screenWidth = window.screen.availWidth;
-    const screenHeight = window.screen.availHeight;
-    const left = (screenWidth - windowWidth) / 2;
-    const top = (screenHeight - windowHeight) / 2;
-
-    // Abrir la ventana emergente en el centro de la pantalla
-    window.open(url, '_blank', `${windowFeatures},left=${left},top=${top}`);
   }
 
+  sendFile(): void {
+    if (window.confirm('¿Estás seguro de enviar el archivo?')) {
+      if (!this.selectedRow) return;
+
+      const body = new FormData();
+      body.append('file', this.fileTmp.fileRaw, this.fileTmp.fileName);
+      body.append('idsolicitud_muestras', this.selectedRow.idsolicitud_muestras); // Añadir el ID al cuerpo de la solicitud
+
+      this.muestras.sendPost(body).subscribe({
+        next: res => {
+          console.log(res);
+          this.snackBar.open('Archivo enviado exitosamente', 'Cerrar', {
+            duration: 5000
+          }).afterDismissed().subscribe(() => {
+            window.close(); // Cerrar la ventana emergente
+          });
+          window.location.reload();
+        },
+        error: err => {
+          console.error(err);
+          this.snackBar.open('Error al enviar el archivo', 'Cerrar', {
+            duration: 5000
+          });
+        }
+      });
+    }
+  }
 }

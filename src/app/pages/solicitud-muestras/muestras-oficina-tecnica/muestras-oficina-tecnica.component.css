@@ -180,3 +180,52 @@ mat-icon {
     width: 100%; /* Ancho completo */
   }
 }
+.detalle-muestra {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.titulo {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.botones {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.boton-pdf, .boton-excel {
+  background-color: #e00f0f;
+  color: #fff;
+  border: none;
+  padding: 10px 40px 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+.boton-pdf mat-icon, .boton-excel mat-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  margin-left: 10px;
+}
+
+.boton-pdf:hover, .boton-excel:hover {
+  background-color: #dd4646;
+}
+
+.info p {
+  margin-bottom: 10px;
+}
+
+.info p strong {
+  font-weight: bold;
+}

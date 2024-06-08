@@ -1,210 +1,367 @@
-.spacer {
-  flex: 1 1 auto;
-}
-.example-action-buttons {
-  padding-bottom: 20px;
-}
-
-.example-headers-align .mat-expansion-panel-header-description {
-  justify-content: space-between;
-  align-items: center;
+.table-container {
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+  position: relative;
 }
 
-.example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
-  margin-left: 8px;
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 2; /* Asegura que esté por encima del resto de la tabla */
+  background-color: #fff; /* Fondo blanco para mantener la legibilidad */
 }
-.form-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
+
+.table-wrapper {
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+}
+
+
+.sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: #fff; /* Fondo blanco para mantener la legibilidad */
+}
+/* Estilos base */
+.detalle-muestra {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.full-width {
-  flex: 1 1 100%;
-}
-
-.half-width {
-  flex: 1 1 calc(50% - 16px);
-  min-width: 200px;
-}
-
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 16px;
-}
-
-mat-form-field {
-  display: flex;
-  flex-direction: column;
-}
-
-textarea[matInput] {
-  resize: vertical;
-}
-section {
-  display: table;
-}
-
-.example-label {
-  display: table-cell;
-  font-size: 14px;
-  margin-left: 8px;
-  min-width: 120px;
-}
-
-.example-button-row {
-  display: table-cell;
-  max-width: 600px;
-}
-
-.example-button-row .mat-mdc-button-base {
-  margin: 8px 8px 8px 0;
-}
-
-.example-flex-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.example-button-container {
-  display: flex;
-  justify-content: center;
-  width: 120px;
-}
-
-button {
+  padding: 20px;
   margin-top: 20px;
 }
 
-/* Estilos adicionales para el botón */
-button.mat-raised-button {
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-tr.selected {
-  background-color: lightblue;
-}
-tr:hover {
-  background-color: lightblue;
-  cursor: pointer;
-}
-.comment-cell {
-  word-wrap: break-word;
-  max-width: 200px; /* ajusta el ancho máximo según sea necesario */
-}
-.row-red {
-  background-color: #ff9999;
-}
-.row-yellow {
-  background-color: #ffffcc; /* Amarillo clarito */
-}
-
-.row-green {
-  background-color: #ccffcc; /* Verde clarito */
-}
-.logistica-card {
-  flex-shrink: 0;
-  width: 150px;
-  height: 150px;
-  background-color: #ffffff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-.logistica-header {
+.detalle-muestra h2 {
+  font-size: 1.6em;
+  color: #333333;
   margin-bottom: 10px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
 }
 
-.logistica-status {
-  margin: 0;
-  font-size: 14px;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 4px;
+.detalle-muestra p {
+  font-size: 1.2em;
+  color: #666666;
+  margin-bottom: 8px;
 }
 
-/* Background colors for different statuses */
-.estado-finalizado {
-  background-color: #4caf50; /* Green */
+.detalle-muestra p:last-child {
+  margin-bottom: 0;
+}
+.row-pending {
+  background-color: #ffea65; /* Amarillo suave */
 }
 
-.estado-pendiente {
-  background-color: #ff9800; /* Orange */
+.row-in-progress {
+  background-color: #6fc9e9; /* Azul claro */
 }
 
-.estado-cancelado {
-  background-color: #f44336; /* Red */
+.row-completed {
+  background-color: #28a745; /* Verde oscuro */
 }
+
+.selected-row {
+  border: 2px solid red; /* Cambia el grosor y el estilo del borde según tus preferencias */
+}
+
+/* Media queries para hacer responsive */
+@media screen and (max-width: 768px) {
+  .detalle-muestra {
+    padding: 15px;
+    margin-top: 15px;
+  }
+
+  .detalle-muestra h2 {
+    font-size: 1.4em;
+  }
+
+  .detalle-muestra p {
+    font-size: 1em;
+  }
+}
+
+
+/* Estilos para el formulario dentro del mat-accordion */
+
+.mat-expansion-panel-content {
+  background-color: #28a745; /* Color de fondo */
+}
+
+.mat-expansion-panel-header {
+
+  color: black;
+  /* Color del texto del encabezado */
+  font-weight: bold; /* Fuente en negrita */
+}
+
+.mat-panel-title {
+  font-size: 18px; /* Tamaño de fuente del título */
+
+}
+
+.mat-panel-description {
+  display: none; /* Oculta la descripción */
+
+}
+
 .form-container {
-  width: 80%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  padding: 20px; /* Espaciado interno */
+  background-color: rgb(255, 255, 255);
 }
 
 .form-row {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 10px; /* Espaciado entre filas */
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end; /* Alineación a la derecha */
+  margin-top: 20px; /* Espaciado superior */
+}
+
+.form-actions .submit-button {
+  background-color: #003366; /* Color de fondo del botón */
+  color: #ffffff; /* Color del texto del botón */
+  font-weight: bold; /* Fuente en negrita */
+}
+
+/* Estilos para los campos de entrada */
+.mat-form-field {
+  width: 100%; /* Ancho completo */
+  margin-right: 15px; /* Margen derecho */
+}
+
+/* Estilos para los campos de entrada de ancho medio */
+.half-width {
+  width: calc(50% - 7.5px); /* Ancho del 50% menos el margen */
+}
+
+/* Estilos para los campos de entrada de ancho tercio */
+.third-width {
+  width: calc(33.33% - 7.5px); /* Ancho del 33.33% menos el margen */
+}
+
+/* Estilos para los campos de entrada de ancho completo */
+.full-width {
+  width: 100%; /* Ancho completo */
+}
+
+/* Estilo para textarea */
+textarea.mat-input-element {
+  resize: vertical; /* Permitir redimensionar verticalmente */
+}
+
+/* Estilo para el ícono de flecha */
+mat-icon {
+  vertical-align: middle; /* Alineación vertical */
+}
+
+/* Estilos responsivos */
+
+@media screen and (max-width: 600px) {
+  .form-row {
+    flex-direction: column; /* Cambia la dirección a columna */
+  }
+
+  .form-actions {
+    justify-content: center; /* Alinea al centro */
+  }
+
+  .mat-form-field {
+    width: 100%; /* Ancho completo */
+    margin-right: 0; /* Elimina el margen derecho */
+  }
+
+  .half-width,
+  .third-width {
+    width: 100%; /* Ancho completo */
+  }
+}
+.detalle-muestra {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.titulo {
+  font-size: 24px;
   margin-bottom: 15px;
 }
 
-.half-width {
-  flex: 1 0 50%;
-  margin-right: 15px;
-}
-
-.third-width {
-  flex: 1 0 33.33%;
-  margin-right: 15px;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.mat-form-field {
+.botones {
+  display: flex;
+  justify-content: flex-end;
   margin-bottom: 10px;
 }
 
-.mat-label {
+.boton-pdf, .boton-excel {
+  background-color: #e00f0f;
+  color: #fff;
+  border: none;
+  padding: 10px 40px 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+.boton-pdf mat-icon, .boton-excel mat-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  margin-left: 10px;
+}
+
+.boton-pdf:hover, .boton-excel:hover {
+  background-color: #dd4646;
+}
+
+.info p {
+  margin-bottom: 10px;
+}
+
+.info p strong {
+  font-weight: bold;
+}
+.detalle-muestra {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.titulo {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.botones {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.boton-pdf, .boton-excel {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 40px 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+.boton-pdf mat-icon, .boton-excel mat-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  margin-left: 10px;
+}
+
+.boton-pdf:hover, .boton-excel:hover {
+  background-color: #0056b3;
+}
+
+.info p {
+  margin-bottom: 10px;
+}
+
+.info p strong {
   font-weight: bold;
 }
 
-.mat-input-element {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  width: 100%;
-  resize: none;
+.form-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.mat-form-field.mat-focused .mat-input-element {
+.file-input-container {
+  margin-bottom: 10px;
+}
 
+.file-label {
+  margin-bottom: 5px;
+}
 
-  border-color: #6200ee;
+.file-input {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .botones {
+    justify-content: center;
+  }
+
+  .boton-pdf, .boton-excel {
+    margin-right: 10px;
+  }
+
+  .info {
+    flex-direction: column;
+  }
+}
+.file-input-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.file-label {
+  margin-right: 10px;
+  flex: 1 1 100px;
+}
+
+.file-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  flex: 2 1 200px;
+}
+
+.file-name {
+  margin-top: 10px;
+  color: #333;
+}
+
+mat-card {
+  margin-top: 20px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button[mat-raised-button].send-button {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button[mat-raised-button].send-button:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .file-input-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .file-label, .file-input {
+    flex: 1 1 auto;
+    margin-bottom: 10px;
+  }
+
+  mat-card-actions {
+    justify-content: center;
+  }
 }

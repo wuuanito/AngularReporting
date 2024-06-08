@@ -22,7 +22,6 @@ import { administracionGuardGuard } from './core/guard/administracion-guard.guar
 import { MuestrasDireccionTecnicaComponent } from './pages/solicitud-muestras/muestras-direccion-tecnica/muestras-direccion-tecnica.component';
 import { MuestrasOficinaTecnicaComponent } from './pages/solicitud-muestras/muestras-oficina-tecnica/muestras-oficina-tecnica.component';
 import { MuestrasCalidadComponent } from './pages/solicitud-muestras/muestras-calidad/muestras-calidad.component';
-import { FormularioLogisticaComponent } from './pages/solicitud-muestras/muestras-calidad/formulario-logistica/formulario-logistica.component';
 import { MuestrasLogisticaComponent } from './pages/solicitud-muestras/muestras-logistica/muestras-logistica.component';
 export const routes: Routes = [
   {
@@ -132,10 +131,7 @@ export const routes: Routes = [
 
     ],
   },
-  {
-    path: 'formulario_logistica',
-    component: FormularioLogisticaComponent,
-  },
+ 
 
 ];
 
