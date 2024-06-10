@@ -28,6 +28,7 @@
     "@fullcalendar/core": "^6.1.13",
     "@fullcalendar/daygrid": "^6.1.13",
     "@igniteui/material-icons-extended": "^3.0.0",
+    "@mui/icons-material": "^5.15.19",
     "angular-calendar": "^0.31.1",
     "bootstrap": "^5.3.3",
     "date-fns": "^3.6.0",
