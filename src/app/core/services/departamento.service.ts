@@ -14,14 +14,14 @@ export class DepartamentoService {
    }
 
    getDepartamentos(): Observable<any> {
-    return this.HttpClient.get('http://localhost:3000/user/departamentos');
+    return this.HttpClient.get(environment.apiUrl +'/user/departamentos');
   }
 
 
   createNewDepartamento(obj: DepartamentoModelo): Observable<any> {
-    return this.HttpClient.post('http://localhost:3000/departamentos', obj);
+    return this.HttpClient.post(environment.apiUrl +'/departamentos', obj);
   }
   deleteDepartamento(id: number): Observable<any> {
-    return this.HttpClient.delete('http://localhost:3000/departamentos/${id}');
+    return this.HttpClient.delete(environment.apiUrl +'/departamentos/${id}');
   }
 }
