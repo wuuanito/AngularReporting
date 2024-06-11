@@ -6,3 +6,23 @@
   border-bottom: 2px solid #333; /* Línea inferior */
   padding-bottom: 5px; /* Espacio entre el texto y la línea inferior */
 }
+.custom-link {
+  color: black; /* Establece el color del texto a negro */
+  text-decoration: none; /* Elimina el subrayado */
+}
+
+.custom-link:hover {
+  color: black; /* Mantiene el color negro al pasar el ratón por encima */
+  text-decoration: none; /* Mantiene sin subrayado al pasar el ratón por encima */
+}
+
+.custom-link.active {
+  color: red; /* Cambia el color a rojo cuando está activo */
+  text-decoration: underline; /* Subraya cuando está activo */
+}
+.custom-link {
+  transition: color 0.3s ease;
+}
+.custom-link:hover {
+  color: #1a202c;
+}

@@ -68,11 +68,12 @@
            </a>
           </ng-container>
           <ng-container *ngIf="isUserRole('oficina_tecnica')">
-            <a rrouterLink="/layout/muestras" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a routerLink="/layout/muestras" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />              </svg>
               <span class="flex-1 ms-3 whitespace-nowrap">MUESTRAS</span>
-           </a>          </ng-container>
+           </a>
+          </ng-container>
           <ng-container *ngIf="isUserRole('laboratorio')">
             <a routerLink="/layout/muestras-calidad" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -89,12 +90,13 @@
     </ul>
     <br><hr>
      <div class="flex items-center justify-end rtl:justify-end">
-      <span class="mr-3">{{ username }}</span> <!-- Mostrar nombre de usuario -->
-      <span class="mr-3">({{ rol }})</span> <!-- Mostrar rol del usuario -->
-
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User menu">
         <mat-icon>account_circle</mat-icon>
       </button>
+      <span class="mr-3">{{ username }}</span> <!-- Mostrar nombre de usuario -->
+      <span class="mr-3">({{ rol }})</span> <!-- Mostrar rol del usuario -->
+
+     
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="logout()">Cerrar sesión</button> <!-- Añade el evento click para cerrar sesión -->
       </mat-menu>
