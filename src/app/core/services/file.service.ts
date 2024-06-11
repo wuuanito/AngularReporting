@@ -7,7 +7,7 @@ import { environment } from '../../../config';
   providedIn: 'root'
 })
 export class FileService {
-  private baseUrl = environment.apiUrl +'/fileroutes';
+  private baseUrl = 'http://localhost:3000/fileroutes';
 
   constructor(private http: HttpClient) { }
 

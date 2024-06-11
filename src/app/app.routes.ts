@@ -23,6 +23,7 @@ import { MuestrasDireccionTecnicaComponent } from './pages/solicitud-muestras/mu
 import { MuestrasOficinaTecnicaComponent } from './pages/solicitud-muestras/muestras-oficina-tecnica/muestras-oficina-tecnica.component';
 import { MuestrasCalidadComponent } from './pages/solicitud-muestras/muestras-calidad/muestras-calidad.component';
 import { MuestrasLogisticaComponent } from './pages/solicitud-muestras/muestras-logistica/muestras-logistica.component';
+import { ReservaSalasComponent } from './pages/reserva-salas/reserva-salas.component';
 export const routes: Routes = [
   {
     path: '',
@@ -48,6 +49,10 @@ export const routes: Routes = [
             path:'inicio',
             component:InicioComponent
 
+          },
+          {
+            path:'reserva-salas',
+            component:ReservaSalasComponent
           },
           {
             path: 'dept-informatica',
@@ -131,7 +136,7 @@ export const routes: Routes = [
 
     ],
   },
- 
+
 
 ];
 

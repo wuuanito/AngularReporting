@@ -20,15 +20,15 @@ export class EmpleadoService {
 
   login(obj: LoginModel): Observable<any> {
     console.log('Desde el servicio:',obj); // Imprime los datos que se están enviando al backend
-    return this.httpClient.post(environment.apiUrl +'/user/login', obj);
+    return this.httpClient.post('http://localhost:3000/user/login', obj);
   }
 
   getAllEmpleados(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl +'/user/empleados');
+    return this.httpClient.get('http://localhost:3000/user/empleados');
   }
 
   getEmpleadosPorDepartamento(idDepartamento: number): Observable<Empleadomodelo[]> {
-    return this.httpClient.get<Empleadomodelo[]>(environment.apiUrl +'/user/departamento/${idDepartamento}');
+    return this.httpClient.get<Empleadomodelo[]>('http://localhost:3000/user/departamento/${idDepartamento}');
   }
 
 

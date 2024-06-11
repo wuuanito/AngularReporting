@@ -296,19 +296,7 @@ mat-icon {
   display: none;
 }
 
-@media screen and (max-width: 600px) {
-  .botones {
-    justify-content: center;
-  }
 
-  .boton-pdf, .boton-excel {
-    margin-right: 10px;
-  }
-
-  .info {
-    flex-direction: column;
-  }
-}
 .file-input-container {
   display: flex;
   align-items: center;

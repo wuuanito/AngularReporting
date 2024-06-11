@@ -18,11 +18,11 @@ export class BolsaHorasService {
       descripcion: descripcion
     };
 
-    return this.HttpClient.post(environment.apiUrl +'/bolsa_horas/insertarHoras', formData);
+    return this.HttpClient.post('/bolsa_horas/insertarHoras', formData);
   }
 
   ocultarHoras(idServicio: number): Observable<any> {
-    return this.HttpClient.put(environment.apiUrl +`/bolsa_horas/ocultarHoras/${idServicio}`, {});
+    return this.HttpClient.put(`http://localhost:3000/bolsa_horas/ocultarHoras/${idServicio}`, {});
 }
 
 

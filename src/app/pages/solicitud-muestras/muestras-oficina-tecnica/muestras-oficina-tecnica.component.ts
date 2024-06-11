@@ -40,7 +40,7 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
   showDetails: boolean = true; // Controla la visibilidad de los detalles de la muestra
 
   displayedColumns: string[] = [
-    'idsolicitud_muestras', 'solicitante','nombre','cod_producto', 'lote', 'fecha','estado'
+    'idsolicitud_muestras', 'solicitante','nombre','cod_producto', 'lote', 'fecha','estado','expediciones'
   ];
 
     expandedElement: UserData | null = null;

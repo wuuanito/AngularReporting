@@ -59,8 +59,16 @@
         <td mat-cell *matCellDef="let row"> {{ row.estado }} </td>
       </ng-container>
       <ng-container matColumnDef="estado_almacen">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO ALMACEN</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO LABORATORIO</th>
         <td mat-cell *matCellDef="let row"> {{ row.estado_almacen }} </td>
+      </ng-container>
+      <ng-container matColumnDef="archivo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let row"> {{ row.archivo }} </td>
+      </ng-container>
+      <ng-container matColumnDef="expediciones">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> EXPEDICIONES</th>
+        <td mat-cell *matCellDef="let row"> {{ row.expediciones }} </td>
       </ng-container>
 
 
@@ -84,20 +92,11 @@
 
 
 <br>
-<mat-accordion>
-  <mat-expansion-panel hideToggle style="background-color: #28a745;">
-    <mat-expansion-panel-header>
-      <mat-panel-title style="color: white;">NUEVA SOLICITUD </mat-panel-title>
-      <mat-panel-description><mat-icon>arrow_downward</mat-icon></mat-panel-description>
-    </mat-expansion-panel-header>
 
-
-  </mat-expansion-panel>
-</mat-accordion>
 
 <br>
 <div *ngIf="selectedRow" class="detalle-muestra">
-  <h2 class="titulo">Detalles de la muestra: {{ selectedRow.id_solicitud_almacen }}</h2>
+  <h2 class="titulo">Detalles de la muestra: {{ selectedRow.idsolicitud_muestras }}</h2>
   <div class="botones">
     <button class="boton-pdf" (click)="downloadPDF()">
       Exportar a PDF <mat-icon>picture_as_pdf</mat-icon>
@@ -109,6 +108,7 @@
     <p><strong>Solicitante:</strong> {{ selectedRow.solicitante }}</p>
     <p><strong>Comentario:</strong> {{ selectedRow.comentario }}</p>
     <p><strong>Lote:</strong> {{ selectedRow.lote }}</p>
+    <p><strong>Laboratorio:</strong> {{ selectedRow.estado_almacen }}</p>
     <p><strong>Fecha:</strong> {{ selectedRow.fecha | date:'dd/MM/yyyy' }}</p>
     <p><strong>Estado:</strong>
       <span [ngClass]="{
@@ -120,9 +120,16 @@
       </span>
     </p>
 
-      <div class="button-group">
-        <button mat-raised-button color="primary" (click)="updateEstadoAlmacenProcesando()">CAMBIAR ESTADO A FINALIZADO</button>
-      </div>
+    <div class="button-group">
+      <button mat-raised-button color="primary" (click)="updateEstadoLaboratorio()"[disabled]="selectedRow.estado_almacen === 'NO SE NECESITA LABORATORIO'" [disabled]="selectedRow.estado_almacen === 'DEVUELTO A LABORATORIO'">DEVOLVER A LABORATORIO</button>
+      <br>
+      <hr>
+        <button mat-raised-button color="primary" (click)="downloadFile(selectedRow.archivo)" [disabled]="selectedRow.estado_almacen === 'NO SE NECESITA LABORATORIO'">DESCARGAR ARCHIVO</button>
+        <br>
+        <hr>
+      <button mat-raised-button color="primary" (click)="updateEstadoAlmacenProcesando()">FINALIZAR </button>
+
+    </div>
   </div>
 
 

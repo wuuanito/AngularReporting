@@ -47,7 +47,7 @@ export class MuestrasCalidadComponent {
   showDetails: boolean = true; // Controla la visibilidad de los detalles de la muestra
 
   displayedColumns: string[] = [
-    'idsolicitud_muestras', 'solicitante','nombre','cod_producto', 'lote', 'fecha','estado','estado_almacen'
+    'idsolicitud_muestras', 'solicitante','nombre','cod_producto', 'lote', 'fecha','estado','estado_almacen','expediciones'
   ];
 
     expandedElement: UserData | null = null;
@@ -284,5 +284,32 @@ export class MuestrasCalidadComponent {
         }
       });
     }
+  }
+  sendExpediciones(){
+    if (!this.selectedRow) return;
+
+    const mensaje = "¿Estás seguro de que deseas enviar esta muestra a expediciones?";
+    if (confirm(mensaje)) {
+      const body = {
+        idsolicitud_muestras: this.selectedRow.idsolicitud_muestras,
+      };
+
+      this.muestras.enviarExpediciones(body).subscribe({
+        next: res => {
+          console.log(res);
+          this.snackBar.open('Se ha enviado a expediciones correctamente', 'Cerrar', {
+            duration: 5000
+          });
+          window.location.reload();
+        },
+        error: err => {
+          console.error(err);
+          this.snackBar.open('Error al enviar', 'Cerrar', {
+            duration: 5000
+          });
+        }
+      });
+    }
+
   }
 }

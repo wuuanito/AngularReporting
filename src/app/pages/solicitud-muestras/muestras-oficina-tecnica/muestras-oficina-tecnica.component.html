@@ -55,6 +55,11 @@
         <td mat-cell *matCellDef="let row"> {{ row.estado }} </td>
       </ng-container>
 
+      <ng-container matColumnDef="expediciones">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> EXPEDICIONES </th>
+        <td mat-cell *matCellDef="let row"> {{ row.expediciones }} </td>
+      </ng-container>
+
 
 
       <!-- Definir las filas de la tabla -->
@@ -64,7 +69,7 @@
       [ngClass]="{
         'row-pending': row.estado === 'Pendiente',
         'row-in-progress': row.estado === 'En proceso',
-        'row-completed': row.estado === 'Completado',
+        'row-completed': row.estado === 'FINALIZADO',
         'selected-row': isSelected(row)
       }">
   </tr>
@@ -144,7 +149,7 @@
     <button class="boton-pdf" (click)="downloadPDF()">
       Exportar a PDF <mat-icon>picture_as_pdf</mat-icon>
     </button>
-   
+
   </div>
   <div class="info">
     <p><strong>Solicitante:</strong> {{ selectedRow.solicitante }}</p>

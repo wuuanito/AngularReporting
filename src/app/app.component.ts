@@ -24,7 +24,7 @@ import { Socket } from 'socket.io-client';
 import { HttpClient } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { FullCalendarModule } from '@fullcalendar/angular';
-
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 
 

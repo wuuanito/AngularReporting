@@ -39,10 +39,11 @@ export interface UserData {
 export class MuestrasLogisticaComponent {
 
 
+
   showDetails: boolean = true; // Controla la visibilidad de los detalles de la muestra
 
   displayedColumns: string[] = [
-    'idsolicitud_muestras', 'departamento_solicitante','solicitante','nombre','cod_producto', 'lote', 'fecha','estado','estado_almacen'
+    'idsolicitud_muestras', 'departamento_solicitante','solicitante','nombre','cod_producto', 'lote', 'fecha','estado','estado_almacen','expediciones'
   ];
 
     expandedElement: UserData | null = null;
@@ -284,7 +285,7 @@ export class MuestrasLogisticaComponent {
   updateEstadoAlmacenProcesando() {
     if (!this.selectedRow) return;
 
-    const mensaje = "¿Estás seguro de que deseas actualizar el estado del almacén?";
+    const mensaje = "¿Estás seguro de que deseas actualizar el estado del Laboratorio?";
     if (confirm(mensaje)) {
       const body = {
         idsolicitud_muestras: this.selectedRow.idsolicitud_muestras,
@@ -293,14 +294,14 @@ export class MuestrasLogisticaComponent {
       this.muestras.updateEstadoAlmacenProcesando(body).subscribe({
         next: res => {
           console.log(res);
-          this.snackBar.open('El estado del almacén se ha actualizado correctamente', 'Cerrar', {
+          this.snackBar.open('El estado del Laboratorio se ha actualizado correctamente', 'Cerrar', {
             duration: 5000
           });
           window.location.reload();
         },
         error: err => {
           console.error(err);
-          this.snackBar.open('Error al actualizar el estado del almacén', 'Cerrar', {
+          this.snackBar.open('Error al actualizar el estado del Laboratorio', 'Cerrar', {
             duration: 5000
           });
         }
@@ -309,9 +310,39 @@ export class MuestrasLogisticaComponent {
   }
 
 
+  updateEstadoLaboratorio() {
+    if (!this.selectedRow) return;
+
+    const mensaje = "¿Estás seguro de que deseas actualizar el estado del Laboratorio?";
+    if (confirm(mensaje)) {
+      const body = {
+        idsolicitud_muestras: this.selectedRow.idsolicitud_muestras,
+      };
+
+      this.muestras.devolverLaboratorio(body).subscribe({
+        next: res => {
+          console.log(res);
+          this.snackBar.open('El estado del Laboratorio se ha actualizado correctamente', 'Cerrar', {
+            duration: 5000
+          });
+          window.location.reload();
+        },
+        error: err => {
+          console.error(err);
+          this.snackBar.open('Error al actualizar el estado del Laboratorio', 'Cerrar', {
+            duration: 5000
+          });
+        }
+      });
+    }
+  }
 
 
-
+  downloadFile(filepath: string) {
+    // Construye la URL completa del archivo
+    const url = `${filepath}`;
+    this.muestras.downloadFile(url);
+  }
 
 
 }

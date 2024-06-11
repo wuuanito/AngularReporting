@@ -55,8 +55,12 @@
         <td mat-cell *matCellDef="let row"> {{ row.estado }} </td>
       </ng-container>
       <ng-container matColumnDef="estado_almacen">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO ALMACEN </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO LABORATORIO </th>
         <td mat-cell *matCellDef="let row"> {{ row.estado_almacen }} </td>
+      </ng-container>
+      <ng-container matColumnDef="expediciones">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> EXPEDICIONES </th>
+        <td mat-cell *matCellDef="let row"> {{ row.expediciones }} </td>
       </ng-container>
 
 
@@ -137,6 +141,17 @@
         </mat-card-actions>
       </mat-card>
     </div>
+
+    <div class="form-container">
+
+      <mat-card>
+        <mat-card-content>
+          <p>ENVIAR SOLICITUD A EXPEDICIONES</p>
+          <button mat-raised-button color="primary" (click)="sendExpediciones()">ENVIAR A EXPEDICIONES</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
 
     </div>
 
