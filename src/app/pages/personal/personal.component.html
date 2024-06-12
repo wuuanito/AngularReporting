@@ -1,0 +1,35 @@
+<h3 class="section-title text-2xl font-bold text-center py-4">SOLICITUD DE PERSONAL</h3>
+<nav class="bg-white border border-gray-200 dark:border-gray-700 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800 shadow">
+  <div class="container flex flex-wrap justify-between items-center mx-auto">
+    <button class="md:hidden focus:outline-none focus:ring focus:ring-offset-2 focus:ring-indigo-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2 md:p-0">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16v12H4zm-2-2a1 1 0 0 1 2-2l10 10a1 1 0 0 1-2 2L2 8a1 1 0 0 1 0-2z"></path>
+      </svg>
+    </button>
+    <div class="w-full md:block md:w-auto hidden fixed left-0 top-0 z-50 h-full overflow-auto bg-white dark:bg-gray-800 md:relative md:h-auto md:overflow-visible" id="mobile-menu">
+      <ul class="flex flex-col md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+        <li>
+          <a
+            routerLink="/layout/departamento/personal/solicitud-personal"
+            class="custom-link block py-2 pr-4 pl-3 self-center text-xl font-semibold whitespace-nowrap md:p-0 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+          >
+            FORMULARIO
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/layout/departamento/personal/solicitudes-personal"
+            class="custom-link block py-2 pr-4 pl-3 self-center text-xl font-semibold whitespace-nowrap md:p-0 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+          >
+            VER SOLICITUDES
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<br>
+
+<router-outlet></router-outlet>

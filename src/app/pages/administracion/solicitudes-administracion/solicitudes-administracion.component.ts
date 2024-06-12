@@ -69,7 +69,7 @@ export class SolicitudesAdministracionComponent {
     descripcion: '',
     id_departamento: '39'
   };
-  displayedColumns: string[] = ['id_solicitud', 'solicitud', 'tipo_solicitud', 'fecha', 'estado', 'prioridad', 'descripcion'];
+  displayedColumns: string[] = ['id_solicitud','solicitudes',  'fecha','tipo', 'estado','prioridad' ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -180,6 +180,9 @@ export class SolicitudesAdministracionComponent {
         // Si no está presente, puedes asignar un valor predeterminado o dejarlo vacío según tu lógica
         this.selectedRow.estado_almacen = 'No disponible';
       }
+    }
+    toggleDetails() {
+      this.selectedRow = null; // Esto oculta los detalles al hacer clic en "Ocultar Detalles"
     }
   }
 

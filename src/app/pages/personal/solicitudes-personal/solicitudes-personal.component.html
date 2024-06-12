@@ -1,0 +1,109 @@
+<div class="flex flex-col w-full">
+  <input type="text" [(ngModel)]="searchText" class="p-2 mb-2 border-gray-300 rounded-md focus:ring focus:ring-blue-200" placeholder="Buscar...">
+  <div class="overflow-x-auto">
+    <div class="relative w-full overflow-auto">
+      <table class="w-full caption-bottom text-sm">
+        <thead class="[&amp;_tr]:border-b">
+          <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              ID
+            </th>
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              Nombre del Solicitante
+            </th>
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              Candidatos
+            </th>
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              Prácticas
+            </th>
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              Departamento
+            </th>
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              Fecha
+            </th>
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              Experiencia
+            </th>
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              Justificación
+            </th>
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              Notas
+            </th>
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              Estado
+            </th>
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              Acción
+            </th>
+          </tr>
+        </thead>
+        <tbody class="[&amp;_tr:last-child]:border-0">
+          <ng-container *ngFor="let item of filteredData">
+            <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted" *ngIf="filterItem(item)">
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.id }}</td>
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.nombre_solicitante }}</td>
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.candidatos }}</td>
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.practicas }}</td>
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.departamento }}</td>
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.fecha | date: 'dd/MM/yyyy' }}</td>
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.experiencia }}</td>
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.justificacion }}</td>
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.notas }}</td>
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.estado }}</td>
+
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                <div class="flex gap-2">
+                  <button (click)="aprobarSolicitud(item.id)" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:text-accent-foreground h-10 w-10 text-green-500 hover:bg-green-100 dark:hover:bg-green-900">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="h-5 w-5"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path>
+                    </svg>
+                    <span class="sr-only">Aprobar</span>
+                  </button>
+                  <button (click)="denegarSolicitud(item.id)" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:text-accent-foreground h-10 w-10 text-red-500 hover:bg-red-100 dark:hover:bg-red-900">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="h-5 w-5"
+                    >
+                      <path d="M18 6 6 18"></path>
+                      <path d="m6 6 12 12"></path>
+                    </svg>
+                    <span class="sr-only">Denegar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="flex justify-between mt-4">
+  <button class="border rounded-md py-2 px-4 bg-blue-500 text-white hover:bg-blue-600" (click)="filterStatus('completed')">Ver Aprobadas</button>
+  <button class="border rounded-md py-2 px-4 bg-yellow-500 text-white hover:bg-yellow-600" (click)="filterStatus('pending')">Ver Pendientes</button>
+  <button class="border rounded-md py-2 px-4 bg-red-500 text-white hover:bg-red-600" (click)="filterStatus('rejected')">Ver Rechazadas</button>
+  <button class="border rounded-md py-2 px-4 bg-green-500 text-white hover:bg-red-600" (click)="filterStatus('all')">Ver Todas</button>
+
+</div>

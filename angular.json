@@ -34,9 +34,8 @@
             ],
             "scripts": [
               "./node_modules/hammerjs/hammer.min.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/@fullcalendar/core/main.min.js",
-              "node_modules/@fullcalendar/daygrid/main.min.js"
+              "node_modules/jquery/dist/jquery.min.js"
+
             ],
             "server": "src/main.server.ts",
             "prerender": true,

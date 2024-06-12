@@ -23,8 +23,7 @@ import { Socket } from 'socket.io-client';
 
 import { HttpClient } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { FullCalendarModule } from '@fullcalendar/angular';
-import dayGridPlugin from '@fullcalendar/daygrid';
+
 
 
 
@@ -33,7 +32,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [IgxGridModule,FullCalendarModule,RouterOutlet,HttpClientModule,MatSnackBarModule,MatButtonModule, MatMenuModule, MatIconModule,CommonModule,MatButtonModule,MatDatepickerModule,MatInputModule],
+  imports: [IgxGridModule,RouterOutlet,HttpClientModule,MatSnackBarModule,MatButtonModule, MatMenuModule, MatIconModule,CommonModule,MatButtonModule,MatDatepickerModule,MatInputModule],
   providers: [EmpleadoService,DepartamentoService,SharedService,ProveedoresService,BolsaHorasService,SolicitudesServiceService,WebSocketService,HttpClientModule,HttpClient,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

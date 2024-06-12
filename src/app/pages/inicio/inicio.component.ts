@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FullCalendarModule } from '@fullcalendar/angular';
-import { CalendarOptions } from '@fullcalendar/core';
+
 import {MatTabGroup, MatTabsModule} from '@angular/material/tabs';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
@@ -12,8 +11,7 @@ import { CommonModule } from '@angular/common';
 import { CarouselModule } from '@coreui/angular';
 import { MatIcon } from '@angular/material/icon';
 
-import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
+
 interface Circular {
   title: string;
   message: string;
@@ -22,7 +20,7 @@ interface Circular {
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [FullCalendarModule,RouterLink,MatTabsModule,ButtonModule,TagModule,CarouselModule,CommonModule,MatIcon,MatButtonModule],
+  imports: [RouterLink,MatTabsModule,ButtonModule,TagModule,CarouselModule,CommonModule,MatIcon,MatButtonModule],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
@@ -57,33 +55,11 @@ export class InicioComponent {
   }
   @ViewChild('tabGroup') tabGroup!: MatTabGroup;
 
-  calendarOptions1: CalendarOptions = {
-    plugins: [dayGridPlugin, interactionPlugin],
-    initialView: 'dayGridMonth',
-    events: [
-      { title: 'Evento de Reunión 1', date: '2024-06-01' },
-      { title: 'Evento de Reunión 1-2', date: '2024-06-10' }
-    ]
-  };
 
 
-  calendarOptions2: CalendarOptions = {
-    plugins: [dayGridPlugin, interactionPlugin],
-    initialView: 'dayGridMonth',
-    events: [
-      { title: 'Evento de Reunión 2', date: '2024-06-05' },
-      { title: 'Evento de Reunión 2-2', date: '2024-06-15' }
-    ]
-  };
 
-  calendarOptions3: CalendarOptions = {
-    plugins: [dayGridPlugin, interactionPlugin],
-    initialView: 'dayGridMonth',
-    events: [
-      { title: 'Evento de Gerencia', date: '2024-06-20' },
-      { title: 'Evento de Gerencia 2', date: '2024-06-25' }
-    ]
-  };
+
+
 
   ngAfterViewInit() {
     this.tabGroup.selectedTabChange.subscribe(() => {

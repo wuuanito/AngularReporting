@@ -24,6 +24,10 @@ import { MuestrasOficinaTecnicaComponent } from './pages/solicitud-muestras/mues
 import { MuestrasCalidadComponent } from './pages/solicitud-muestras/muestras-calidad/muestras-calidad.component';
 import { MuestrasLogisticaComponent } from './pages/solicitud-muestras/muestras-logistica/muestras-logistica.component';
 import { ReservaSalasComponent } from './pages/reserva-salas/reserva-salas.component';
+import { TomaMuestrasComponent } from './pages/laboratorio/toma-muestras/toma-muestras.component';
+import { SolicituPersonalComponent } from './pages/personal/solicitu-personal/solicitu-personal.component';
+import { PersonalComponent } from './pages/personal/personal.component';
+import { SolicitudesPersonalComponent } from './pages/personal/solicitudes-personal/solicitudes-personal.component';
 export const routes: Routes = [
   {
     path: '',
@@ -109,6 +113,21 @@ export const routes: Routes = [
              }
             ],
           },
+
+          {
+            path:'personal',
+            component:PersonalComponent,
+            children:[
+              {
+                path:'solicitud-personal',
+                component:SolicituPersonalComponent
+              },
+              {
+                path:'solicitudes-personal',
+                component:SolicitudesPersonalComponent
+              }
+            ]
+          }
         ],
 
 

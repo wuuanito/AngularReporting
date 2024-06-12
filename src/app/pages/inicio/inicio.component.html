@@ -3,11 +3,11 @@
   body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    color:  #01931c;
+    color: #01931c;
     background-color: #f8f8f8;
   }
   header, footer {
-    background-color:  #01931c;
+    background-color: #01931c;
     color: #fff;
     padding: 20px 40px;
     display: flex;
@@ -23,7 +23,7 @@
     text-decoration: underline;
   }
   main {
-    padding: 40px;
+    padding: 4px;
     background-color: #ffffff;
     flex-grow: 1;
   }
@@ -36,12 +36,13 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 40px 0;
+    padding: 4px 0;
+    margin-top: 20px; /* Añadido para separar del header */
   }
   .hero h2 {
     font-size: 36px;
-    color:  #01931c;
-    margin-bottom: 20px;
+    color: #01931c;
+    margin-bottom: 10px;
   }
   .hero p {
     font-size: 18px;
@@ -49,7 +50,7 @@
     max-width: 800px;
   }
   .buttons {
-    margin-top: 20px;
+    margin-top: 1px;
   }
   .button {
     display: inline-block;
@@ -65,14 +66,14 @@
     color: #fff;
   }
   .button-primary:hover {
-    background-color:  #01931c;
+    background-color: #01931c;
   }
   .button-secondary {
-    border: 2px solid  #01931c;
-    color:  #01931c;
+    border: 2px solid #01931c;
+    color: #01931c;
   }
   .button-secondary:hover {
-    background-color:  #01931c;
+    background-color: #01931c;
     color: #fff;
   }
   .image img {
@@ -100,41 +101,44 @@
 </style>
 <body>
 <header>
-  <div class="container">
-    <a>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-white">
-        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
-        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
-      </svg>
-      <span class="ml-2 text-lg font-semibold text-white">Rioja Nature Pharma</span>
-    </a>
-  </div>
+<div class="container">
+  <a style="display: flex; align-items: center; justify-content: center; text-decoration: none;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-white">
+      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+    </svg>
+    <h3 style="background-color: #01931c; margin-left: 8px; text-align: center;" class="text-lg font-semibold text-white">Rioja Nature Pharma</h3>
+  </a>
+</div>
 </header>
 <main>
-  <div class="container">
-    <section class="hero">
-      <div>
-        <h2>Descubre la Salud Natural</h2>
-        <p>En Riojanature Pharma, nos dedicamos a ofrecer productos farmacéuticos de alta calidad, elaborados con ingredientes naturales y sostenibles. Nuestro objetivo es mejorar la salud y el bienestar de nuestros clientes de una manera respetuosa con el medio ambiente.</p>
-        <div class="buttons">
-          <a href="https://www.riojanaturepharma.com/es" class="button button-primary">Sobre Nosotros</a>
-          <a href="mailto:info.naturepharma@naturepharma.es" class="button button-secondary">Contacto</a>        </div>
+<div class="container">
+  <section class="hero">
+    <div>
+      <h2>Bienvenido a RNP Connect</h2>
+      <p>¡Nos alegra darte la bienvenida a RNP Connect. Estamos encantados de presentar esta herramienta. RNP Connect ha sido diseñada para poner en contacto los distintos departamentos de la empresa en tiempo real.</p>
+      <p>Gracias por unirte a RNP Connect. ¡Esperamos que disfrutes de todas las ventajas y funcionalidades que ofrecemos!</p>
+      <div class="buttons">
+        <p>Si tienes alguna pregunta o necesitas ayuda, nuestro equipo de soporte está aquí para asistirte, Estamos comprometidos en ofrecerte la mejor experiencia posible.</p>
+        <hr>
+        <p>Correo Electrónico: rps&#64;naturepharma.es<br> Correo Electrónico: desarrollo&#64;naturepharma.es<br> Teléfono: Ext. 163 y ext. 280</p>
+        <p><a href="mailto:desarrollos.naturepharma@naturepharma.es" class="button button-secondary">Contacto</a></p>
       </div>
-      <div class="image">
-        <img src="assets/fabrica.png" alt="Fábrica de Riojanature Pharma">
-      </div>
-    </section>
-  </div>
+    </div>
+    <div class="image" style="margin-left: 80px;">
+      <img src="assets/fabrica.png" alt="Fábrica de Riojanature Pharma">
+    </div>
+  </section>
+</div>
 </main>
 <footer>
-  <div class="container">
-    <p>© 2024 Riojanature Pharma. Todos los derechos reservados.</p>
-    <nav>
-      <a >Términos de Servicio</a>
-<hr>
-      <a >Privacidad</a>
-
-    </nav>
-  </div>
+<div class="container">
+  <p>© 2024 Riojanature Pharma. Todos los derechos reservados.</p>
+  <nav>
+    <a href="#">Términos de Servicio</a>
+    <hr>
+    <a href="#">Privacidad</a>
+  </nav>
+</div>
 </footer>
 </body>

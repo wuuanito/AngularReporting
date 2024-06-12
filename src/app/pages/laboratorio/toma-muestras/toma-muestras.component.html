@@ -1,0 +1,187 @@
+<!--
+// v0 by Vercel.
+// https://v0.dev/t/jVES4nd4c5g
+-->
+
+<form class="max-w-3xl mx-auto bg-white p-8">
+  <h1 class="text-xl font-bold mb-4">TOMA DE MUESTRAS PARA ENVIO A LABORATORIO</h1>
+  <div class="grid grid-cols-1 gap-4 mb-4">
+    <label class="block">
+      <span class="text-gray-700">Número muestra:</span>
+      <input
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+        placeholder="Indicar el código de muestra que se da en RNPH"
+        type="text"
+      />
+    </label>
+    <label class="block">
+      <span class="text-gray-700">Muestra Id:</span>
+      <input
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+        placeholder="Indicar el código de muestra que da el laboratorio externo al que se envía la muestra"
+        type="text"
+      />
+    </label>
+    <fieldset class="block">
+      <legend class="text-gray-700">Tipo de producto:</legend>
+      <div class="mt-1 space-y-2">
+        <div class="flex items-center">
+          <input
+            id="superficies"
+            class="h-4 w-4 text-indigo-600 border-gray-300"
+            type="radio"
+            name="tipo_producto"
+          />
+          <label for="superficies" class="ml-2 block text-sm text-gray-900">
+            Control de Superficies
+          </label>
+        </div>
+        <div class="flex items-center">
+          <input
+            id="materia_prima"
+            class="h-4 w-4 text-indigo-600 border-gray-300"
+            type="radio"
+            name="tipo_producto"
+          />
+          <label for="materia_prima" class="ml-2 block text-sm text-gray-900">
+            Materia prima
+          </label>
+        </div>
+        <div class="flex items-center">
+          <input
+            id="producto_intermedio"
+            class="h-4 w-4 text-indigo-600 border-gray-300"
+            type="radio"
+            name="tipo_producto"
+          />
+          <label for="producto_intermedio" class="ml-2 block text-sm text-gray-900">
+            Producto intermedio
+          </label>
+        </div>
+        <div class="flex items-center">
+          <input
+            id="producto_acabado"
+            class="h-4 w-4 text-indigo-600 border-gray-300"
+            type="radio"
+            name="tipo_producto"
+          />
+          <label for="producto_acabado" class="ml-2 block text-sm text-gray-900">
+            Producto Acabado
+          </label>
+        </div>
+        <div class="flex items-center">
+          <input id="agua" class="h-4 w-4 text-indigo-600 border-gray-300" type="radio" name="tipo_producto" />
+          <label for="agua" class="ml-2 block text-sm text-gray-900">
+            Agua
+          </label>
+        </div>
+        <div class="flex items-center">
+          <input id="otros" class="h-4 w-4 text-indigo-600 border-gray-300" type="radio" name="tipo_producto" />
+          <label for="otros" class="ml-2 block text-sm text-gray-900">
+            Otros (explicar)
+          </label>
+        </div>
+      </div>
+    </fieldset>
+    <label class="block">
+      <span class="text-gray-700">Nombre del producto:</span>
+      <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" type="text" />
+    </label>
+    <div class="grid grid-cols-2 gap-4">
+      <label class="block">
+        <span class="text-gray-700">Código de producto:</span>
+        <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" type="text" />
+      </label>
+      <label class="block">
+        <span class="text-gray-700">Lote:</span>
+        <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" type="text" />
+      </label>
+    </div>
+    <label class="block">
+      <span class="text-gray-700">Caducidad:</span>
+      <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" type="text" />
+    </label>
+    <label class="block">
+      <span class="text-gray-700">Persona que realiza la toma de muestras:</span>
+      <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" type="text" />
+    </label>
+    <div class="grid grid-cols-2 gap-4">
+      <label class="block">
+        <span class="text-gray-700">Fecha toma de muestras:</span>
+        <input
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+          placeholder="__/__/____"
+          type="text"
+        />
+      </label>
+      <label class="block">
+        <span class="text-gray-700">Hora toma de muestras:</span>
+        <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" placeholder="__:__" type="text" />
+      </label>
+    </div>
+    <label class="block">
+      <span class="text-gray-700">Persona que realiza el análisis:</span>
+      <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" type="text" />
+    </label>
+    <div class="grid grid-cols-4 gap-4">
+      <label class="block col-span-1">
+        <span class="text-gray-700">Sala:</span>
+        <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" type="text" />
+      </label>
+      <label class="block col-span-1">
+        <span class="text-gray-700">Tipo de sala:</span>
+        <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" type="text" />
+      </label>
+      <label class="block col-span-1">
+        <span class="text-gray-700">Código equipo:</span>
+        <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" type="text" />
+      </label>
+      <label class="block col-span-1">
+        <span class="text-gray-700">Punto de muestreo:</span>
+        <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" type="text" />
+      </label>
+    </div>
+    <label class="block">
+      <span class="text-gray-700">Resultado:</span>
+      <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" type="text" />
+    </label>
+    <label class="block">
+      <span class="text-gray-700">Cantidad de muestra:</span>
+      <input
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+        placeholder="6 ml de producto necesarios para realizar el análisis"
+        type="text"
+      />
+    </label>
+    <label class="block">
+      <span class="text-gray-700">Método toma de muestras:</span>
+      <textarea
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+        rows="3"
+        placeholder="Procedimiento interno. Anacines estériles. Bolsa zip. Toma de muestra en condiciones de asepsia"
+      ></textarea>
+    </label>
+    <label class="block">
+      <span class="text-gray-700">Laboratorio:</span>
+      <input
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+        placeholder="CNTA, AQD, RNPH, Otros: (Indicar)"
+        type="text"
+      />
+    </label>
+    <label class="block">
+      <span class="text-gray-700">Tipo de análisis a realizar:</span>
+      <textarea
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+        rows="2"
+        placeholder="Indicar parámetros analíticos a analizar y método de análisis"
+      ></textarea>
+    </label>
+  </div>
+  <button
+    type="submit"
+    class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+  >
+    Enviar
+  </button>
+</form>

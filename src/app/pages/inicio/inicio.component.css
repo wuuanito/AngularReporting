@@ -6,7 +6,7 @@ body {
 
 .container {
   width: 100%; /* Cambiamos el ancho máximo a 100% */
-  padding: 20px;
+  padding: 1px;
   box-sizing: border-box; /* Incluimos el padding en el ancho total */
 }
 

@@ -1,0 +1,68 @@
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form (ngSubmit)="onSubmit(solicitudForm)" #solicitudForm="ngForm">
+        <div class="form-group mb-3">
+          <label for="nombre_solicitante" class="form-label">Nombre del solicitante</label>
+          <input type="text" class="form-control" id="nombre_solicitante" name="nombre_solicitante" [(ngModel)]="model.nombre_solicitante" required placeholder="Escribe tu respuesta" ngModel name="nombre_solicitante">
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="candidatos" class="form-label">Nº de candidatos/as solicitados/as</label>
+          <input type="number" class="form-control" id="candidatos" name="candidatos" [(ngModel)]="model.candidatos" required placeholder="Ingresa un número" ngModel name="candidatos">
+        </div>
+        <div class="form-group mb-3">
+          <label for="practicas" class="form-label">Prácticas</label>
+          <select class="form-control" id="practicas" name="practicas" [(ngModel)]="model.practicas" ngModel name="practicas">
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="departamento" class="form-label">Departamento/Sección</label>
+          <select class="form-control" id="departamento" name="departamento" [(ngModel)]="model.departamento" ngModel name="departamento">
+            <option value="logistica">Logística</option>
+            <option value="calidad">Calidad/Laboratorio</option>
+            <option value="oficina_tecnica">Oficina Técnica</option>
+            <option value="administracion">Administración</option>
+            <option value="compras">Compras</option>
+            <option value="produccion">Producción</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="fecha" class="form-label">Fecha de inicio</label>
+          <input type="date" class="form-control" id="fecha" name="fecha" [(ngModel)]="model.fecha" required ngModel name="fecha">
+        </div>
+        <div class="form-group mb-3">
+          <label for="experiencia" class="form-label">Experiencia indispensable</label>
+          <select class="form-control" id="experiencia" name="experiencia" [(ngModel)]="model.experiencia" ngModel name="experiencia">
+            <option value="norequerida">No requerida</option>
+            <option value="1">1 año</option>
+            <option value="1-5">1-5 años</option>
+            <option value="5+">Más de 5 años</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="justificacion" class="form-label">Justificación de la necesidad</label>
+          <select class="form-control" id="justificacion" name="justificacion" [(ngModel)]="model.justificacion" ngModel name="justificacion">
+            <option value="Puesto de nueva creacion">Puesto de nueva creación</option>
+            <option value="Ampliacion de equipo">Ampliación de equipo</option>
+            <option value="Sustitucion de vacaciones">Sustitución de vacaciones</option>
+            <option value="Sustitucion de baja">Sustitución de baja</option>
+          </select>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="notas" class="form-label">Notas</label>
+          <small id="notasHelp" class="form-text text-muted">Si desea añadir algo para que se tenga en cuenta respecto al puesto solicitado, indíquelo. Indique dónde está situada la granja en caso de haberla escogido.</small>
+         <br>
+          <textarea class="form-control" id="notas" name="notas" [(ngModel)]="model.notas" rows="3" placeholder="Escribe tu respuesta" ngModel name="notas"></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
