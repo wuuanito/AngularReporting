@@ -50,4 +50,25 @@ export class MuestrasService {
   devolverLaboratorio(body: any): Observable<any> {
     return this.httpclient.put<any>('http://localhost:3000/muestras/devolverLaboratorio', body);
   }
+
+  subscribeToSSE(): Observable<any> {
+    return new Observable(observer => {
+      const eventSource = new EventSource('http://localhost:3000/muestras/muestras');
+
+      eventSource.addEventListener('update', (event: any) => {
+        const data = JSON.parse(event.data);
+        observer.next(data);
+      });
+
+      eventSource.addEventListener('error', (error: any) => {
+        observer.error(error.data);
+      });
+
+      return () => {
+        eventSource.close();
+      };
+    });
+  }
+
+
 }

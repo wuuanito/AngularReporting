@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
@@ -17,6 +17,8 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { SharedService } from '../../../core/services/servicio-compartido.service';
 import {MatGridListModule} from '@angular/material/grid-list';
 import jsPDF from 'jspdf';
+import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 
 export interface UserData {
   id_solicitud_muestras: string;
@@ -36,40 +38,21 @@ export interface UserData {
   templateUrl: './muestras-oficina-tecnica.component.html',
   styleUrl: './muestras-oficina-tecnica.component.css'
 })
-export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
+export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
+  sseSubscription!: Subscription; // inicialización en el constructor
   showDetails: boolean = true; // Controla la visibilidad de los detalles de la muestra
-
+  dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
   displayedColumns: string[] = [
     'idsolicitud_muestras', 'solicitante','nombre','cod_producto', 'lote', 'fecha','estado','expediciones'
   ];
-
-    expandedElement: UserData | null = null;
+  
+  expandedElement: UserData | null = null;
 
   username: string | null = null;
   formData: any;
   selectedRow: any;
-
-  selectRow(row: any) {
-    if (this.selectedRow === row) {
-      this.selectedRow = null; // Si la fila ya está seleccionada, deseleccionarla
-    } else {
-      this.selectedRow = row; // Si la fila no está seleccionada, seleccionarla
-    }
-  }
-
-
-
-  toggleSubRow(row: UserData) {
-    this.selectedRow = this.selectedRow === row ? null : row;
-  }
-
-  toggleRow(row: any): void {
-    this.selectedRow = this.selectedRow === row ? null : row;
-  }
-  isSelected(row: any): boolean {
-    return this.selectedRow === row;
-  }
-  isExpansionDetailRow = (index: number, row: any) => this.selectedRow === row;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private muestras: MuestrasService,private snackBar: MatSnackBar,private sharedService: SharedService) {
     const userDataString = localStorage.getItem('ticketData');
@@ -93,17 +76,56 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
       };
     }
   }
-  dataSource: MatTableDataSource<UserData> = new MatTableDataSource<UserData>();
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-
-
-  ngOnInit() {
+  ngOnInit()  {
     this.getMuestras();
 
+        this.sseSubscription = this.muestras.subscribeToSSE().subscribe(
+      data => {
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error => {
+        console.error('Error en SSE:', error);
+      }
+    );
   }
+
+  private destroy$ = new Subject<void>();
+
+ 
+
+
+  selectRow(row: any) {
+    if (this.selectedRow === row) {
+      this.selectedRow = null; // Si la fila ya está seleccionada, deseleccionarla
+    } else {
+      this.selectedRow = row; // Si la fila no está seleccionada, seleccionarla
+    }
+  }
+
+
+
+  toggleSubRow(row: UserData) {
+    this.selectedRow = this.selectedRow === row ? null : row;
+  }
+
+  toggleRow(row: any): void {
+    this.selectedRow = this.selectedRow === row ? null : row;
+  }
+  isSelected(row: any): boolean {
+    return this.selectedRow === row;
+  }
+  isExpansionDetailRow = (index: number, row: any) => this.selectedRow === row;
+
+
+
+  
+
+
+
+ 
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -130,21 +152,11 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
   }
 
   getMuestras() {
-    this.muestras.getSolicitudMuestras().subscribe(
-      (data: UserData[]) => {
-        // Asigna los datos recibidos al origen de datos de la tabla
-        this.dataSource.data = data;
-        // Asigna el paginador
-        this.dataSource.paginator = this.paginator;
-        // Asigna el ordenador de la tabla
-        this.dataSource.sort = this.sort;
-      },
-      error => {
-        // Muestra un mensaje emergente de error
-
-        console.error('Error al obtener las muestras:', error); // Registra el error en la consola
-      }
-    );
+    this.muestras.getSolicitudMuestras().subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
   agregarMuestra() {
     this.muestras.agregarMuestra(this.formData).subscribe(
@@ -231,4 +243,14 @@ export class MuestrasOficinaTecnicaComponent implements AfterViewInit {
     // Guardar el PDF
     doc.save(fileName);
   }
-}
+
+
+  ngOnDestroy(): void {
+    if (this.sseSubscription) {
+      this.sseSubscription.unsubscribe();
+    }
+  }
+  }
+
+
+
