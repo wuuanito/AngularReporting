@@ -15,6 +15,7 @@ export interface SolicitudPersonal {
   experiencia: string;
   justificacion: string;
   notas?: string;
+  puesto: string;
 }
 
 @Component({
@@ -34,7 +35,8 @@ export class SolicituPersonalComponent  {
     fecha: new Date(),
     experiencia: '',
     justificacion: '',
-    notas: ''
+    notas: '',
+    puesto:''
   };
 
 

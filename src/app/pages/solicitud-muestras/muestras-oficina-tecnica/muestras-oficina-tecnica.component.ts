@@ -19,6 +19,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import jsPDF from 'jspdf';
 import { Subscription } from 'rxjs';
 import { Subject } from 'rxjs';
+import { NotificacionService } from '../../../core/services/notificacion.service';
 
 export interface UserData {
   id_solicitud_muestras: string;
@@ -54,7 +55,7 @@ export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private muestras: MuestrasService,private snackBar: MatSnackBar,private sharedService: SharedService) {
+  constructor(private muestras: MuestrasService,private snackBar: MatSnackBar,private sharedService: SharedService,private notificationService: NotificacionService) {
     const userDataString = localStorage.getItem('ticketData');
     if (userDataString) {
       const userData = JSON.parse(userDataString);
@@ -85,6 +86,7 @@ export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        
       },
       error => {
         console.error('Error en SSE:', error);

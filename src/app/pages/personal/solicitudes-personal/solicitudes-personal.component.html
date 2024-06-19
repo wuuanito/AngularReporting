@@ -15,7 +15,7 @@
               Candidatos
             </th>
             <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-              Prácticas
+              Tipo de contrato
             </th>
             <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
               Departamento
@@ -54,7 +54,7 @@
               <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.notas }}</td>
               <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.estado }}</td>
 
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0" *ngIf="item.estado !== 'rechazado'">
                 <div class="flex gap-2">
                   <button (click)="aprobarSolicitud(item.id)" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:text-accent-foreground h-10 w-10 text-green-500 hover:bg-green-100 dark:hover:bg-green-900">
                     <svg
@@ -105,5 +105,4 @@
   <button class="border rounded-md py-2 px-4 bg-yellow-500 text-white hover:bg-yellow-600" (click)="filterStatus('pending')">Ver Pendientes</button>
   <button class="border rounded-md py-2 px-4 bg-red-500 text-white hover:bg-red-600" (click)="filterStatus('rejected')">Ver Rechazadas</button>
   <button class="border rounded-md py-2 px-4 bg-green-500 text-white hover:bg-red-600" (click)="filterStatus('all')">Ver Todas</button>
-
 </div>

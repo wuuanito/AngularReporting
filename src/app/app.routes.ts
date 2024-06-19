@@ -28,6 +28,7 @@ import { TomaMuestrasComponent } from './pages/laboratorio/toma-muestras/toma-mu
 import { SolicituPersonalComponent } from './pages/personal/solicitu-personal/solicitu-personal.component';
 import { PersonalComponent } from './pages/personal/personal.component';
 import { SolicitudesPersonalComponent } from './pages/personal/solicitudes-personal/solicitudes-personal.component';
+import { personalGuard } from './core/guard/personal.guard';
 export const routes: Routes = [
   {
     path: '',
@@ -124,6 +125,8 @@ export const routes: Routes = [
               },
               {
                 path:'solicitudes-personal',
+                canActivate:[personalGuard],
+
                 component:SolicitudesPersonalComponent
               }
             ]

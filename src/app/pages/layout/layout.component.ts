@@ -20,6 +20,7 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import { NotificacionService } from '../../core/services/notificacion.service';
 
 
 @Component({
@@ -30,6 +31,7 @@ import {MatSelectModule} from '@angular/material/select';
   styleUrl: './layout.component.css'
 })
 export class LayoutComponent {
+  notifications: string[] = [];
 
   username: string | null = null;
  rol: string | null = null;
@@ -39,7 +41,14 @@ export class LayoutComponent {
 
   showDivInicio: boolean = false;
 
+  constructor(private router: Router,private sharedService: SharedService,private notificacionService : NotificacionService) {
+    const localData = localStorage.getItem('ticketData');
 
+    if (localData != null) {
+
+      this.loggedData = JSON.parse(localData);
+    }
+}
   ngOnInit(): void {
     const userDataString = localStorage.getItem('ticketData');
 
@@ -47,6 +56,9 @@ export class LayoutComponent {
       const userData = JSON.parse(userDataString);
       this.username = userData.user.nombre;
       this.rol = userData.user.rol;
+      this.notificacionService.notifications$.subscribe(notification => {
+        this.notifications.push(notification);
+      });
     }
   }
   logout(): void {
@@ -57,15 +69,13 @@ export class LayoutComponent {
 
     this.router.navigateByUrl('/login');
   }
+
+  clearNotifications(): void {
+    this.notifications = [];
+    this.notificacionService.clearNotifications();
+  }
   loggedData: Empleadomodelo = new Empleadomodelo(0, '', '', '', '', '', 0);
-  constructor(private router: Router,private sharedService: SharedService) {
-    const localData = localStorage.getItem('ticketData');
 
-    if (localData != null) {
-
-      this.loggedData = JSON.parse(localData);
-    }
-}
 
 getUserRole(): string | null {
   const localData = localStorage.getItem('ticketData');
@@ -108,6 +118,17 @@ toggleDivRouter() {
 showInicio() {
   this.showDivInicio = true;
 }
+
+
+showNotificationsPanel: boolean = false;
+
+toggleNotificationsPanel(): void {
+  this.showNotificationsPanel = !this.showNotificationsPanel;
+}
+
+
+
+
 }
 
 
