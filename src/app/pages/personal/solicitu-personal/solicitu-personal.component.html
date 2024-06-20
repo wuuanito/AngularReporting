@@ -20,18 +20,13 @@
             <option value="Practicas">Practicas</option>
 
 
+
           </select>
         </div>
         <div class="form-group mb-3">
           <label for="departamento" class="form-label">Departamento/Sección</label>
-          <select class="form-control" id="departamento" name="departamento" [(ngModel)]="model.departamento" ngModel name="departamento">
-            <option value="logistica">Logística</option>
-            <option value="calidad">Calidad/Laboratorio</option>
-            <option value="oficina_tecnica">Oficina Técnica</option>
-            <option value="administracion">Administración</option>
-            <option value="compras">Compras</option>
-            <option value="produccion">Producción</option>
-          </select>
+          <input type="text" class="form-control" id="departamento" name="departamento" [(ngModel)]="model.departamento" required placeholder="Departamento..." ngModel name="departamento">
+
         </div>
         <div class="form-group mb-3">
           <label for="puesto" class="form-label">Puesto</label>
@@ -57,6 +52,8 @@
             <option value="Ampliacion de equipo">Ampliación de equipo</option>
             <option value="Sustitucion de vacaciones">Sustitución de vacaciones</option>
             <option value="Sustitucion de baja">Sustitución de baja</option>
+            <option value="Suplencia">Suplencia</option>
+
           </select>
         </div>
 

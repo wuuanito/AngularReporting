@@ -1,0 +1,14 @@
+.aprobado {
+    background-color: #d4edda; /* verde claro */
+  }
+  
+  .pendiente {
+    background-color: #fff3cd; /* amarillo claro */
+  }
+  
+  .rechazado {
+    background-color: #f8d7da; /* rojo claro */
+  }
+  .sin-color {
+    background-color: white;
+  }

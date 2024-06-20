@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import io from 'socket.io-client';
-import { environment } from '../../../config';
+import { environment } from '../../../enviroments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebSocketService {
   private socket: any;
+  private apiUrl = environment.apiUrl;
 
   constructor() {
-    this.socket = io("http://localhost:3000/" );
+    this.socket = io(`${this.apiUrl}/`);
   }
 
   enviarMensaje(mensaje: string) {

@@ -11,11 +11,11 @@ export interface SolicitudPersonal {
   candidatos: number;
   practicas: string;
   departamento: string;
+  puesto: string;
   fecha: Date;
   experiencia: string;
   justificacion: string;
   notas?: string;
-  puesto: string;
 }
 
 @Component({
@@ -32,11 +32,12 @@ export class SolicituPersonalComponent  {
     candidatos: 0,
     practicas: '',
     departamento: '',
+    puesto:'',
     fecha: new Date(),
     experiencia: '',
     justificacion: '',
     notas: '',
-    puesto:''
+    
   };
 
 

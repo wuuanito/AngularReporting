@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../config';
+import { environment } from '../../../enviroments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BolsaHorasService {
 
-  constructor(private HttpClient:HttpClient) { }
+  private apiUrl = environment.apiUrl;
+
+  constructor(private httpClient: HttpClient) { }
 
   guardarDatos(idProveedor: number, fecha: string, numHoras: number, descripcion: string): Observable<any> {
     const formData = {
@@ -18,17 +20,10 @@ export class BolsaHorasService {
       descripcion: descripcion
     };
 
-    return this.HttpClient.post('http://localhost:3000/bolsa_horas/insertarHoras', formData);
+    return this.httpClient.post(`${this.apiUrl}bolsa_horas/insertarHoras`, formData);
   }
 
   ocultarHoras(idServicio: number): Observable<any> {
-    return this.HttpClient.put(`http://localhost:3000/bolsa_horas/ocultarHoras/${idServicio}`, {});
+    return this.httpClient.put(`${this.apiUrl}bolsa_horas/ocultarHoras/${idServicio}`, {});
+  }
 }
-
-
-}
-
-
-
-
-

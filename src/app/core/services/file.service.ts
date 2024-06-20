@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../config';
+import { environment } from '../../../enviroments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
-  private baseUrl = 'http://localhost:3000/fileroutes';
+  private apiUrl = environment.apiUrl;
+
+  private baseUrl = `${this.apiUrl}/fileroutes`;
 
   constructor(private http: HttpClient) { }
 

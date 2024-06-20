@@ -21,6 +21,9 @@
               Departamento
             </th>
             <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+              Puesto
+            </th>
+            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
               Fecha
             </th>
             <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
@@ -42,19 +45,64 @@
         </thead>
         <tbody class="[&amp;_tr:last-child]:border-0">
           <ng-container *ngFor="let item of filteredData">
-            <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted" *ngIf="filterItem(item)">
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.id }}</td>
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.nombre_solicitante }}</td>
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.candidatos }}</td>
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.practicas }}</td>
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.departamento }}</td>
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.fecha | date: 'dd/MM/yyyy' }}</td>
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.experiencia }}</td>
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.justificacion }}</td>
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.notas }}</td>
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.estado }}</td>
+            <tr *ngIf="filterItem(item)">
+              <td [ngClass]="{
+                    'aprobado': item.estado === 'aprobado',
+                    'pendiente': item.estado === 'pendiente',
+                    'rechazado': item.estado === 'rechazado'
+                  }" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.id }}</td>
+              <td [ngClass]="{
+                    'aprobado': item.estado === 'aprobado',
+                    'pendiente': item.estado === 'pendiente',
+                    'rechazado': item.estado === 'rechazado'
+                  }" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.nombre_solicitante }}</td>
+              <td [ngClass]="{
+                    'aprobado': item.estado === 'aprobado',
+                    'pendiente': item.estado === 'pendiente',
+                    'rechazado': item.estado === 'rechazado'
+                  }" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.candidatos }}</td>
+              <td [ngClass]="{
+                    'aprobado': item.estado === 'aprobado',
+                    'pendiente': item.estado === 'pendiente',
+                    'rechazado': item.estado === 'rechazado'
+                  }" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.practicas }}</td>
+              <td [ngClass]="{
+                    'aprobado': item.estado === 'aprobado',
+                    'pendiente': item.estado === 'pendiente',
+                    'rechazado': item.estado === 'rechazado'
+                  }" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.departamento }}</td>
+              <td [ngClass]="{
+                    'aprobado': item.estado === 'aprobado',
+                    'pendiente': item.estado === 'pendiente',
+                    'rechazado': item.estado === 'rechazado'
+                  }" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.puesto }}</td>
+              <td [ngClass]="{
+                    'aprobado': item.estado === 'aprobado',
+                    'pendiente': item.estado === 'pendiente',
+                    'rechazado': item.estado === 'rechazado'
+                  }" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.fecha | date: 'dd/MM/yyyy' }}</td>
+              <td [ngClass]="{
+                    'aprobado': item.estado === 'aprobado',
+                    'pendiente': item.estado === 'pendiente',
+                    'rechazado': item.estado === 'rechazado'
+                  }" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.experiencia }}</td>
+              <td [ngClass]="{
+                    'aprobado': item.estado === 'aprobado',
+                    'pendiente': item.estado === 'pendiente',
+                    'rechazado': item.estado === 'rechazado'
+                  }" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.justificacion }}</td>
+              <td [ngClass]="{
+                    'aprobado': item.estado === 'aprobado',
+                    'pendiente': item.estado === 'pendiente',
+                    'rechazado': item.estado === 'rechazado'
+                  }" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.notas }}</td>
+              <td [ngClass]="{
+                    'aprobado': item.estado === 'aprobado',
+                    'pendiente': item.estado === 'pendiente',
+                    'rechazado': item.estado === 'rechazado'
+                  }" class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{ item.estado }}</td>
 
-              <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0" *ngIf="item.estado !== 'rechazado'">
+              <td class="p-4 align-middle sin-color [&amp;:has([role=checkbox])]:pr-0" *ngIf="item.estado !== 'rechazado'">
                 <div class="flex gap-2">
                   <button (click)="aprobarSolicitud(item.id)" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:text-accent-foreground h-10 w-10 text-green-500 hover:bg-green-100 dark:hover:bg-green-900">
                     <svg
