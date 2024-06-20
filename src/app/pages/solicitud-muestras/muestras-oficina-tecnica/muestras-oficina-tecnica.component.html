@@ -60,6 +60,11 @@
         <td mat-cell *matCellDef="let row"> {{ row.expediciones }} </td>
       </ng-container>
 
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> cantidad </th>
+        <td mat-cell *matCellDef="let row"> {{ row.expediciones }} </td>
+      </ng-container>
+
 
 
       <!-- Definir las filas de la tabla -->
@@ -91,6 +96,32 @@
 
     <div class="form-container responsive">
       <form #form="ngForm" (ngSubmit)="submitForm(form)" class="form">
+        <mat-checkbox name="crearPack" [(ngModel)]="crearPackChecked" (ngModelChange)="onCheckboxChange('crearPack', $event)">
+          Crear Pack
+        </mat-checkbox>
+        <br>
+        <button *ngIf="crearPackChecked" mat-raised-button color="accent" type="button" (click)="generatePack()">Generar Pack</button>
+
+        <br>
+        <hr>
+
+        
+        <mat-checkbox name="pertenecePack" [(ngModel)]="pertenecePackChecked" (ngModelChange)="onCheckboxChange('pertenecePack', $event)">
+          Pertenece a un Pack
+        </mat-checkbox>
+        <div class="form-row" *ngIf="pertenecePackChecked">
+          <mat-form-field class="half-width">
+            <mat-label>Código del Pack</mat-label>
+            <input matInput name="codigoPack" [(ngModel)]="formData.codigoPack" required>
+          </mat-form-field>
+        </div>
+        <br>
+        <hr>
+        <mat-checkbox name="unitario" [(ngModel)]="unitario" (ngModelChange)="onCheckboxChange('unitario', $event)">
+        Unitario
+        </mat-checkbox>
+        <br>
+        <hr>
         <div class="form-row">
           <mat-form-field class="half-width">
             <mat-label>Nombre</mat-label>
@@ -99,6 +130,10 @@
           <mat-form-field class="half-width">
             <mat-label>COD. PRODUCTO</mat-label>
             <input matInput name="cod_producto" [(ngModel)]="formData.cod_producto" required>
+          </mat-form-field>
+          <mat-form-field class="half-width">
+            <mat-label>CANTIDAD</mat-label>
+            <input matInput name="cantidad" [(ngModel)]="formData.cantidad" required>
           </mat-form-field>
         </div>
 
@@ -136,11 +171,15 @@
 
         <div class="form-actions">
           <button mat-raised-button color="primary" type="submit" class="submit-button">Guardar Solicitud</button>
+
         </div>
+        
       </form>
     </div>
   </mat-expansion-panel>
 </mat-accordion>
+
+
 
 <br>
 <div *ngIf="selectedRow" class="detalle-muestra">
@@ -155,8 +194,11 @@
     <p><strong>Solicitante:</strong> {{ selectedRow.solicitante }}</p>
     <p><strong>Comentario:</strong> {{ selectedRow.comentario }}</p>
     <p><strong>Lote:</strong> {{ selectedRow.lote }}</p>
+    <p><strong>Cantidad:</strong> {{ selectedRow.cantidad }}</p>
     <p><strong>Fecha:</strong> {{ selectedRow.fecha | date:'dd/MM/yyyy' }}</p>
     <p><strong>Estado:</strong> {{ selectedRow.estado }}</p>
   </div>
 </div>
+
+
 

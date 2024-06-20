@@ -1,12 +1,47 @@
-@if ((asyncTabs | async) === null) {
-    Loading tabs...
+<title>Sitio en Desarrollo</title>
+<style>
+  /* Estilos generales */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }
-  
-  <mat-tab-group>
-    @for (tab of asyncTabs | async; track tab) {
-      <mat-tab>
-        <ng-template mat-tab-label>{{tab.label}}</ng-template>
-        {{tab.content}}
-      </mat-tab>
-    }
-  </mat-tab-group>
+
+  .container {
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  h1 {
+    color: #e74c3c;
+  }
+
+  p {
+    color: #444;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .logo {
+    width: 150px;
+    margin-bottom: 20px;
+  }
+</style>
+<body>
+<div class="container">
+  <img src="../../../assets/logo.png" alt="Logo del sitio" class="logo">
+  <h1>Sitio en Desarrollo</h1>
+  <p>Estamos trabajando en mejorar nuestra página web.</p>
+  <p>Vuelve más tarde para disfrutar de la experiencia completa.</p>
+  <p>Cualquier Sugerencia a <strong> desarrollos&#64;naturepharma.es o ext 197</strong></p>
+</div>
+</body>

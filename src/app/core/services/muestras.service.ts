@@ -15,6 +15,9 @@ export class MuestrasService {
   getMuestras() {
     return this.httpclient.get<any[]>(`${this.apiUrl}/muestras/muestras`);
   }
+  getMuestrasPack() {
+    return this.httpclient.get<any[]>(`${this.apiUrl}/muestras/muestrasPack`);
+  }
   agregarMuestra(formData: any): Observable<any> {
     return this.httpclient.post<any>(`${this.apiUrl}/muestras/agregar`, formData);
   }
@@ -36,6 +39,7 @@ export class MuestrasService {
   getSolicitudMuestras() : Observable<any[]>{
     return this.httpclient.get<any[]>(`${this.apiUrl}/muestras/solicitudmuestras`);
   }
+  
   getSolicitudMuestrasCalidad() : Observable<any[]>{
     return this.httpclient.get<any[]>(`${this.apiUrl}/muestras/solicitudmuestrascalidad`);
   }

@@ -71,6 +71,11 @@
         <td mat-cell *matCellDef="let row"> {{ row.expediciones }} </td>
       </ng-container>
 
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CANTIDAD</th>
+        <td mat-cell *matCellDef="let row"> {{ row.cantidad }} </td>
+      </ng-container>
+
 
       <!-- Definir las filas de la tabla -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
@@ -97,17 +102,14 @@
 <br>
 <div *ngIf="selectedRow" class="detalle-muestra">
   <h2 class="titulo">Detalles de la muestra: {{ selectedRow.idsolicitud_muestras }}</h2>
-  <div class="botones">
-    <button class="boton-pdf" (click)="downloadPDF()">
-      Exportar a PDF <mat-icon>picture_as_pdf</mat-icon>
-    </button>
 
-  </div>
   <div class="info">
     <p><strong>DEPARTAMENTO SOLICITANTE:</strong> {{ selectedRow.departamento_solicitante }}</p>
     <p><strong>Solicitante:</strong> {{ selectedRow.solicitante }}</p>
     <p><strong>Comentario:</strong> {{ selectedRow.comentario }}</p>
     <p><strong>Lote:</strong> {{ selectedRow.lote }}</p>
+
+    <p><strong>Cantidad:</strong> {{ selectedRow.cantidad }}</p>
     <p><strong>Laboratorio:</strong> {{ selectedRow.estado_almacen }}</p>
     <p><strong>Fecha:</strong> {{ selectedRow.fecha | date:'dd/MM/yyyy' }}</p>
     <p><strong>Estado:</strong>

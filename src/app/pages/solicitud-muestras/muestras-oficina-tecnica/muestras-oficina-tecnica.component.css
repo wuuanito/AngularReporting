@@ -229,3 +229,24 @@ mat-icon {
 .info p strong {
   font-weight: bold;
 }
+.custom-form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.custom-form-row mat-label {
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.custom-form-row mat-checkbox {
+  transform: scale(1.4); /* Ajustar el tamaño del checkbox */
+  margin-right: 10px;
+}
+
+/* Estilo para el borde del checkbox cuando está enfocado */
+.custom-form-row mat-checkbox:focus {
+  outline: none;
+  border-color: #66afe9; /* Color de borde cuando está enfocado */
+}

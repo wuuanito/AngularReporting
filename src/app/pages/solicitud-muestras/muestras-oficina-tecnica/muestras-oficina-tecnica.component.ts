@@ -20,10 +20,13 @@ import jsPDF from 'jspdf';
 import { Subscription } from 'rxjs';
 import { Subject } from 'rxjs';
 import { NotificacionService } from '../../../core/services/notificacion.service';
+import { MatCheckbox } from '@angular/material/checkbox';
+import {MatTabsModule} from '@angular/material/tabs';
 
 export interface UserData {
   id_solicitud_muestras: string;
   solicitante: string;
+  cantidad: number;
   comentario: string;
   lote: string;
   fecha: string;
@@ -35,7 +38,7 @@ export interface UserData {
 @Component({
   selector: 'app-muestras-oficina-tecnica',
   standalone: true,
-  imports: [ MatToolbarModule, MatPaginatorModule, MatSortModule, MatTableModule, MatInputModule, MatFormFieldModule, MatExpansionModule, MatIconModule, MatSelectModule, MatDividerModule, MatButtonModule, CommonModule, MatSelectModule, FormsModule, MatGridListModule],
+  imports: [MatTabsModule,MatCheckbox, MatToolbarModule, MatPaginatorModule, MatSortModule, MatTableModule, MatInputModule, MatFormFieldModule, MatExpansionModule, MatIconModule, MatSelectModule, MatDividerModule, MatButtonModule, CommonModule, MatSelectModule, FormsModule, MatGridListModule],
   templateUrl: './muestras-oficina-tecnica.component.html',
   styleUrl: './muestras-oficina-tecnica.component.css'
 })
@@ -43,15 +46,21 @@ export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
   sseSubscription!: Subscription; // inicialización en el constructor
   showDetails: boolean = true; // Controla la visibilidad de los detalles de la muestra
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
+  datasourcePack: MatTableDataSource<any> = new MatTableDataSource<any>();
+  
+  displayedColumnsPack: string[] = ['id_pack', 'solicitante','nombre','cod_producto', 'lote', 'fecha','estado','expediciones'];
   displayedColumns: string[] = [
     'idsolicitud_muestras', 'solicitante','nombre','cod_producto', 'lote', 'fecha','estado','expediciones'
   ];
-  
+  formularios: any[] = [{}]; 
   expandedElement: UserData | null = null;
 
   username: string | null = null;
   formData: any;
+  formDataPack: any;
+
   selectedRow: any;
+  selectedRowPack: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -66,6 +75,7 @@ export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
         solicitante: this.username,
         nombre:'',
         cod_producto:'',
+        cantidad: 1,
         lote:'',
         fecha: this.getCurrentDate(),
         estado: 'Pendiente',
@@ -74,6 +84,23 @@ export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
         departamento:''
 
 
+      };
+    }
+
+   
+    if (userDataString){
+      const userData = JSON.parse(userDataString);
+      this.username = userData.user.nombre;
+      this.formDataPack = {
+        solicitante: this.username,
+        nombre: '',
+        cantidad: 1,
+        lote: '',
+        fecha: this.getCurrentDate(),
+        estado: 'Pendiente',
+        comentario: '',
+        hide: 0,
+        departamento: ''
       };
     }
   }
@@ -92,11 +119,24 @@ export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
         console.error('Error en SSE:', error);
       }
     );
+    this.getMuestrasPack();
+    this.sseSubscription = this.muestras.subscribeToSSE().subscribe(
+      dataPack => {
+        this.datasourcePack = new MatTableDataSource(dataPack);
+        this.datasourcePack.paginator = this.paginator;
+        this.datasourcePack.sort = this.sort;
+      },
+      error => {
+        console.error('Error en SSE:', error);
+      }
+    );
+
   }
+
 
   private destroy$ = new Subject<void>();
 
- 
+
 
 
   selectRow(row: any) {
@@ -160,6 +200,16 @@ export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
       this.dataSource.sort = this.sort;
     });
   }
+
+  getMuestrasPack() {
+    this.muestras.getMuestrasPack().subscribe(data => {
+      this.datasourcePack = new MatTableDataSource(data);
+      this.datasourcePack.paginator = this.paginator;
+      this.datasourcePack.sort = this.sort;
+    });
+  }
+  
+
   agregarMuestra() {
     this.muestras.agregarMuestra(this.formData).subscribe(
       () => {
@@ -251,6 +301,34 @@ export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
     if (this.sseSubscription) {
       this.sseSubscription.unsubscribe();
     }
+  }
+
+  crearPackChecked: boolean = false;
+  pertenecePackChecked: boolean = false;
+
+  unitario: boolean = false;
+
+  onCheckboxChange(checkbox: string, event: any) {
+    if (checkbox === 'crearPack' && event) {
+      this.pertenecePackChecked = false;
+    } else if (checkbox === 'pertenecePack' && event) {
+      this.crearPackChecked = false;
+    }
+    else if (checkbox === 'unitario' && event) {
+      this.crearPackChecked = false;
+    }
+  }
+
+  generatePack() {
+    const idPack = this.createIdPack();
+    console.log('ID Pack generado:', idPack);
+    alert(`ID Pack generado: ${idPack}`);
+    // Aquí puedes hacer algo más con el ID del pack, como guardarlo en formData
+  }
+
+  createIdPack() {
+    // Lógica para generar un ID de pack único
+    return 'PACK-' + Math.random().toString(36).substr(2, 9).toUpperCase();
   }
   }
 
