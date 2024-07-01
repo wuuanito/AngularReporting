@@ -27,6 +27,7 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // still needed for 
 
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { provideHttpClient, withFetch } from '@angular/common/http'; // Asegúrate de importar withFetch
 
 
 

@@ -1,28 +1,21 @@
-.section-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333; /* Color de texto */
-  margin-bottom: 10px; /* Espacio inferior */
-  border-bottom: 2px solid #333; /* Línea inferior */
-  padding-bottom: 5px; /* Espacio entre el texto y la línea inferior */
-}
-.custom-link {
-  color: black; /* Establece el color del texto a negro */
-  text-decoration: none; /* Elimina el subrayado */
+.sidenav-container {
+  height: 100%;
 }
 
-.custom-link:hover {
-  color: black; /* Mantiene el color negro al pasar el ratón por encima */
-  text-decoration: none; /* Mantiene sin subrayado al pasar el ratón por encima */
+mat-toolbar {
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
-.custom-link.active {
-  color: red; /* Cambia el color a rojo cuando está activo */
-  text-decoration: underline; /* Subraya cuando está activo */
+mat-sidenav-container {
+  padding-top: 64px;
 }
-.custom-link {
-  transition: color 0.3s ease;
+
+mat-sidenav {
+  width: 200px;
 }
-.custom-link:hover {
-  color: #1a202c;
+
+mat-sidenav-content {
+  padding: 16px;
 }

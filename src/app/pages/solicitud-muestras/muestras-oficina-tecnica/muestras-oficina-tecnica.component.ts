@@ -50,7 +50,7 @@ export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
   
   displayedColumnsPack: string[] = ['id_pack', 'solicitante','nombre','cod_producto', 'lote', 'fecha','estado','expediciones'];
   displayedColumns: string[] = [
-    'idsolicitud_muestras', 'solicitante','nombre','cod_producto', 'lote', 'fecha','estado','expediciones'
+    'idsolicitud_muestras', 'solicitante','nombre','cod_producto','id_pack', 'lote', 'fecha','estado','expediciones'
   ];
   formularios: any[] = [{}]; 
   expandedElement: UserData | null = null;
@@ -87,22 +87,15 @@ export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
       };
     }
 
-   
-    if (userDataString){
-      const userData = JSON.parse(userDataString);
-      this.username = userData.user.nombre;
-      this.formDataPack = {
-        solicitante: this.username,
-        nombre: '',
-        cantidad: 1,
-        lote: '',
-        fecha: this.getCurrentDate(),
-        estado: 'Pendiente',
-        comentario: '',
-        hide: 0,
-        departamento: ''
-      };
+    if (this.unitario == false) {
+      this.formData.pack = 0;
+      this.formData.id_pack ='N/A'
     }
+    if (this.pertenecePackChecked == true) {
+      this.formData.pack = 1;
+      this.formData.id_pack = this.formDataPack.id_pack;
+    }
+   
   }
 
   ngOnInit()  {
@@ -311,11 +304,14 @@ export class MuestrasOficinaTecnicaComponent implements OnInit,OnDestroy {
   onCheckboxChange(checkbox: string, event: any) {
     if (checkbox === 'crearPack' && event) {
       this.pertenecePackChecked = false;
+      this.unitario = false;
     } else if (checkbox === 'pertenecePack' && event) {
       this.crearPackChecked = false;
+      this.unitario = false;
     }
     else if (checkbox === 'unitario' && event) {
       this.crearPackChecked = false;
+      this.pertenecePackChecked = false;
     }
   }
 

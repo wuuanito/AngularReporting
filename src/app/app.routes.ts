@@ -29,6 +29,9 @@ import { SolicituPersonalComponent } from './pages/personal/solicitu-personal/so
 import { PersonalComponent } from './pages/personal/personal.component';
 import { SolicitudesPersonalComponent } from './pages/personal/solicitudes-personal/solicitudes-personal.component';
 import { personalGuard } from './core/guard/personal.guard';
+import { DeptProduccionComponent } from './pages/produccion/dept-produccion/dept-produccion.component';
+import { InicioProduccionComponent } from './pages/produccion/inicio-produccion/inicio-produccion.component';
+import { SolicitudesProduccionComponent } from './pages/produccion/solicitudes-produccion/solicitudes-produccion.component';
 export const routes: Routes = [
   {
     path: '',
@@ -113,6 +116,22 @@ export const routes: Routes = [
               component: SolicitudesAdministracionComponent,
              }
             ],
+ 
+          },
+          {
+            path:'dept-produccion',
+            component:DeptProduccionComponent,
+            children:[
+              {
+                path:'inicio-produccion',
+                component:InicioProduccionComponent
+              },
+              {
+                path:'solicitudes-produccion',
+                component:SolicitudesProduccionComponent
+              }
+            ]
+
           },
 
           {

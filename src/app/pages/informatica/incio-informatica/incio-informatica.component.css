@@ -1,0 +1,18 @@
+.ml-2 {
+    margin-left: 0.5rem;
+  }
+  
+  .team-member .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-body h3 {
+    font-size: 1.5rem;
+  }
+  
+  .card-body p {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  

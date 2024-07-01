@@ -1,8 +1,36 @@
-.section-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333; /* Color de texto */
-  margin-bottom: 10px; /* Espacio inferior */
-  border-bottom: 2px solid #333; /* Línea inferior */
-  padding-bottom: 5px; /* Espacio entre el texto y la línea inferior */
+/* Estilos globales o en el componente */
+.admin-panel {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.card {
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.card-header {
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.table th {
+  font-weight: 600;
+}
+
+.badge {
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
 }

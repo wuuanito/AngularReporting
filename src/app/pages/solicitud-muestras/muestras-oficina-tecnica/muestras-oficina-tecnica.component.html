@@ -30,6 +30,10 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> COD. PRODUCTO </th>
         <td mat-cell *matCellDef="let row"> {{ row.cod_producto }} </td>
       </ng-container>
+      <ng-container matColumnDef="id_pack">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>COD PACK </th>
+        <td mat-cell *matCellDef="let row"> {{ row.id_pack }} </td>
+      </ng-container>
 
       <!-- Comentario Column -->
       <ng-container matColumnDef="comentario">
@@ -112,7 +116,7 @@
         <div class="form-row" *ngIf="pertenecePackChecked">
           <mat-form-field class="half-width">
             <mat-label>Código del Pack</mat-label>
-            <input matInput name="codigoPack" [(ngModel)]="formData.codigoPack" required>
+            <input matInput name="id_pack" [(ngModel)]="formData.id_pack" required>
           </mat-form-field>
         </div>
         <br>

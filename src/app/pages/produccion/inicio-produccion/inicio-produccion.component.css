@@ -1,0 +1,7 @@
+/* dashboard.component.css (opcional) */
+
+.summary-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+}
