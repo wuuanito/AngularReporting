@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { SolicituPersonalComponent, SolicitudPersonal } from '../../pages/personal/solicitu-personal/solicitu-personal.component';
 import { Observable } from 'rxjs';
 
-import { environment } from '../../../enviroments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

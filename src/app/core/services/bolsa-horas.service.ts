@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../enviroments/environment';
-
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,10 +19,10 @@ export class BolsaHorasService {
       descripcion: descripcion
     };
 
-    return this.httpClient.post(`${this.apiUrl}bolsa_horas/insertarHoras`, formData);
+    return this.httpClient.post(`${this.apiUrl}/bolsa_horas/insertarHoras`, formData);
   }
 
   ocultarHoras(idServicio: number): Observable<any> {
-    return this.httpClient.put(`${this.apiUrl}bolsa_horas/ocultarHoras/${idServicio}`, {});
+    return this.httpClient.put(`${this.apiUrl}/bolsa_horas/ocultarHoras/${idServicio}`, {});
   }
 }
