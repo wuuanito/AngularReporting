@@ -1,0 +1,9 @@
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* Color de texto */
+    margin-bottom: 10px; /* Espacio inferior */
+    border-bottom: 2px solid #333; /* Línea inferior */
+    padding-bottom: 5px; /* Espacio entre el texto y la línea inferior */
+  }
+  

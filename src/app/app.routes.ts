@@ -29,6 +29,18 @@ import { SolicituPersonalComponent } from './pages/personal/solicitu-personal/so
 import { PersonalComponent } from './pages/personal/personal.component';
 import { SolicitudesPersonalComponent } from './pages/personal/solicitudes-personal/solicitudes-personal.component';
 import { personalGuard } from './core/guard/personal.guard';
+import { LaboratorioComponent } from './pages/laboratorio/laboratorio/laboratorio.component';
+import { DeptProduccionComponent } from './pages/produccion/dept-produccion/dept-produccion.component';
+import { DeptRrhhComponent } from './pages/rrhh/dept-rrhh/dept-rrhh.component';
+import { OficinaTecnicaComponent } from './pages/oficina-tecnica/oficina-tecnica/oficina-tecnica.component';
+import { DeptMantenimientoComponent } from './pages/mantenimiento/dept-mantenimiento/dept-mantenimiento.component';
+import { GerenciaComponent } from './pages/gerencia/gerencia/gerencia.component';
+import { InicioLaboratorioComponent } from './pages/laboratorio/inicio-laboratorio/inicio-laboratorio.component';
+import { InicioProduccionComponent } from './pages/produccion/inicio-produccion/inicio-produccion.component';
+import { IncioOficinaTecnicaComponent } from './pages/oficina-tecnica/incio-oficina-tecnica/incio-oficina-tecnica.component';
+import { InicioRrhhComponent } from './pages/rrhh/inicio-rrhh/inicio-rrhh.component';
+import { InicioMantenimientoComponent } from './pages/mantenimiento/inicio-mantenimiento/inicio-mantenimiento.component';
+import { InicioGerenciaComponent } from './pages/gerencia/inicio-gerencia/inicio-gerencia.component';
 export const routes: Routes = [
   {
     path: '',
@@ -113,6 +125,79 @@ export const routes: Routes = [
               component: SolicitudesAdministracionComponent,
              }
             ],
+          },
+          {
+            path: 'dept-laboratorio',
+            component:LaboratorioComponent,
+            children:[
+            {
+              path:'inicio-laboratorio',
+              component:InicioLaboratorioComponent
+            }
+            
+            
+            ]
+
+
+
+          },
+          {
+            path:'dept-produccion',
+            component:DeptProduccionComponent,
+            children:[
+            
+              {
+                path:'inicio-produccion',
+                component:InicioProduccionComponent
+              }
+            
+            ]
+
+          },
+          {
+            path:'dept-rrhh',
+            component:DeptRrhhComponent,
+            children:[
+            {
+              path:'inicio-rrhh',
+              component:InicioRrhhComponent
+            }
+            
+            ]
+          },
+          {
+            path:'dept-oficina-tecnica',
+            component:OficinaTecnicaComponent,
+            children:[
+            {
+              path:'inicio-oficina-tecnica',
+              component:IncioOficinaTecnicaComponent
+            }
+            ]
+          },
+          {
+            path:'dept-mantenimiento',
+            component:DeptMantenimientoComponent,
+            children:[
+            
+              {
+                path:'inicio-mantenimiento',
+                component:InicioMantenimientoComponent
+              }
+
+            ]
+
+          },
+          {
+            path:'dept-gerencia',
+            component:GerenciaComponent,
+            children:[
+              {
+path:'inicio-gerencia', 
+component:InicioGerenciaComponent
+
+              }
+              ]
           },
 
           {
