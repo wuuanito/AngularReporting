@@ -41,6 +41,26 @@ import { IncioOficinaTecnicaComponent } from './pages/oficina-tecnica/incio-ofic
 import { InicioRrhhComponent } from './pages/rrhh/inicio-rrhh/inicio-rrhh.component';
 import { InicioMantenimientoComponent } from './pages/mantenimiento/inicio-mantenimiento/inicio-mantenimiento.component';
 import { InicioGerenciaComponent } from './pages/gerencia/inicio-gerencia/inicio-gerencia.component';
+import { rolLaboratorioGuard } from './core/guard/rol-laboratorio.guard';
+import { rolProduccionGuard } from './core/guard/rol-produccion.guard';
+import { rolRrhhGuard } from './core/guard/rol-rrhh.guard';
+import { rolOficinaTecnicaGuard } from './core/guard/rol-oficina-tecnica.guard';
+import { rolMantenimientoGuard } from './core/guard/rol-mantenimiento.guard';
+import { rolGerenciaGuard } from './core/guard/rol-gerencia.guard';
+import { SolicitudesGerenciaComponent } from './pages/gerencia/solicitudes-gerencia/solicitudes-gerencia.component';
+import { SolicitudesLaboratorioComponent } from './pages/laboratorio/solicitudes-laboratorio/solicitudes-laboratorio.component';
+import { SolicitudesProduccionComponent } from './pages/produccion/solicitudes-produccion/solicitudes-produccion.component';
+import { SolicitudesOficinaTecnicaComponent } from './pages/oficina-tecnica/solicitudes-oficina-tecnica/solicitudes-oficina-tecnica.component';
+import { SolicitudesRrhhComponent } from './pages/rrhh/solicitudes-rrhh/solicitudes-rrhh.component';
+import { SolicitudesMantenimientoComponent } from './pages/mantenimiento/solicitudes-mantenimiento/solicitudes-mantenimiento.component';
+import { DeptLogisticaComponent } from './pages/logistica/dept-logistica/dept-logistica.component';
+import { InicioLogisticaComponent } from './pages/logistica/inicio-logistica/inicio-logistica.component';
+import { SolicitudesLogisticaComponent } from './pages/logistica/solicitudes-logistica/solicitudes-logistica.component';
+import { rolLogisticaGuard } from './core/guard/rol-logistica.guard';
+import { DeptInternacionalComponent } from './pages/internacional/dept-internacional/dept-internacional.component';
+import { rolInternacionalGuard } from './core/guard/rol-internacional.guard';
+import { InicioInternacionalComponent } from './pages/internacional/inicio-internacional/inicio-internacional.component';
+import { SolicitudesInternacionalComponent } from './pages/internacional/solicitudes-internacional/solicitudes-internacional.component';
 export const routes: Routes = [
   {
     path: '',
@@ -129,10 +149,16 @@ export const routes: Routes = [
           {
             path: 'dept-laboratorio',
             component:LaboratorioComponent,
+            canActivate:[rolLaboratorioGuard],
             children:[
             {
               path:'inicio-laboratorio',
               component:InicioLaboratorioComponent
+            },
+            {
+              path:'solicitudes-laboratorio',
+              component:SolicitudesLaboratorioComponent
+
             }
             
             
@@ -144,11 +170,16 @@ export const routes: Routes = [
           {
             path:'dept-produccion',
             component:DeptProduccionComponent,
+            canActivate:[rolProduccionGuard],
             children:[
             
               {
                 path:'inicio-produccion',
                 component:InicioProduccionComponent
+              },
+              {
+                path:'solicitudes-produccion',
+                component:SolicitudesProduccionComponent
               }
             
             ]
@@ -157,10 +188,16 @@ export const routes: Routes = [
           {
             path:'dept-rrhh',
             component:DeptRrhhComponent,
+            canActivate:[rolRrhhGuard],
+
             children:[
             {
               path:'inicio-rrhh',
               component:InicioRrhhComponent
+            },
+            {
+              path:'solicitudes-rrhh',
+              component:SolicitudesRrhhComponent
             }
             
             ]
@@ -168,21 +205,33 @@ export const routes: Routes = [
           {
             path:'dept-oficina-tecnica',
             component:OficinaTecnicaComponent,
+            canActivate:[rolOficinaTecnicaGuard],
+
             children:[
             {
               path:'inicio-oficina-tecnica',
               component:IncioOficinaTecnicaComponent
+            },
+            {
+              path:'solicitudes-oficina-tecnica',
+              component:SolicitudesOficinaTecnicaComponent
             }
             ]
           },
           {
             path:'dept-mantenimiento',
             component:DeptMantenimientoComponent,
+            canActivate:[rolMantenimientoGuard],
+
             children:[
             
               {
                 path:'inicio-mantenimiento',
                 component:InicioMantenimientoComponent
+              },
+              {
+                path:'solicitudes-mantenimiento',
+                component:SolicitudesMantenimientoComponent
               }
 
             ]
@@ -191,13 +240,57 @@ export const routes: Routes = [
           {
             path:'dept-gerencia',
             component:GerenciaComponent,
+            canActivate:[rolGerenciaGuard],
+
             children:[
               {
 path:'inicio-gerencia', 
 component:InicioGerenciaComponent
 
+              },
+              {
+                path:'solicitudes-gerencia',
+                component:SolicitudesGerenciaComponent
               }
               ]
+          },
+          {
+            path:'dept-logistica',
+            component:DeptLogisticaComponent,
+            canActivate:[rolLogisticaGuard],
+            children:[
+            {
+              path:'inicio-logistica',
+              component:InicioLogisticaComponent
+            },
+            {
+              path:'solicitudes-logistica',
+              component:SolicitudesLogisticaComponent
+            }
+            
+            
+            ]
+
+
+
+          },
+          {
+
+            path:'dept-internacional',
+            component:DeptInternacionalComponent,
+            canActivate:[rolInternacionalGuard],
+            children:[
+            {
+path:'inicio-internacional',
+component:InicioInternacionalComponent
+
+            },
+             {
+path:'solicitudes-internacional',
+component:SolicitudesInternacionalComponent
+          
+             }
+          ]
           },
 
           {
