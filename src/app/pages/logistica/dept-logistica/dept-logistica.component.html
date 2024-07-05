@@ -1,0 +1,58 @@
+<!-- dept-compras.component.html -->
+<div class="bg-gray-100 min-h-screen py-6">
+    <div class="container mx-auto px-6">
+      <h3 class="section-title text-4xl font-extrabold mb-8 text-center text-gray-900">LOGISTICA</h3>
+    </div>
+  
+    <nav class="bg-white border border-gray-300 dark:border-gray-700 px-6 py-4 rounded dark:bg-gray-900 shadow-lg w-full">
+      <div class="flex flex-wrap justify-between items-center mx-auto">
+        <div class="w-full md:flex md:space-x-12 md:mt-0 md:text-lg md:font-semibold hidden" id="mobile-menu">
+          <ul class="flex flex-col md:flex-row md:space-x-12 w-full">
+            <li>
+              <a
+                routerLink="/layout/departamento/dept-logistica/inicio-logistica"
+                routerLinkActive="active"
+                class="block py-2 pr-4 pl-3 md:hover:text-blue-700 text-2xl font-semibold text-gray-800 dark:text-gray-300 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                INICIO
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/layout/departamento/dept-logistica/solicitudes-logistica"
+                routerLinkActive="active"
+                class="block py-2 pr-4 pl-3 md:hover:text-blue-700 text-2xl font-semibold text-gray-800 dark:text-gray-300 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                SOLICITUDES
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button
+            id="menu-toggle"
+            type="button"
+            class="inline-flex items-center p-3 text-gray-600 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  
+    <div class="w-full px-6 mt-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

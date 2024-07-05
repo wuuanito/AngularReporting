@@ -1,7 +1,7 @@
 <div class="dashboard">
 
     <section class="kpi-grid">
-      <div class="kpi-card" *ngFor="let kpi of labKPIs" [style.background-color]="kpi.color">
+      <div class="kpi-card" *ngFor="let kpi of kpis" [style.background-color]="kpi.color">
         <div class="kpi-icon">
           <mat-icon>{{kpi.icon}}</mat-icon>
         </div>
@@ -17,7 +17,7 @@
       <section class="team-section">
         <h2>Equipo de Laboratorio</h2>
         <div class="team-grid">
-          <div class="team-member" *ngFor="let member of labTeamMembers">
+          <div class="team-member" *ngFor="let member of teamMembers">
             <img [src]="member.image" [alt]="member.name">
             <h3>{{member.name}}</h3>
             <p>{{member.position}}</p>
@@ -28,7 +28,7 @@
       <section class="activity-section">
         <h2>Actividades de Laboratorio Recientes</h2>
         <ul class="activity-list" style="max-height: 300px; overflow-y: auto;">
-          <li *ngFor="let activity of labRecentActivities">
+          <li *ngFor="let activity of recentActivities">
             <mat-icon>event_note</mat-icon>
             <div>
               <p><strong>{{activity.action}}</strong></p>
