@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet,RouterLink } from '@angular/router';
 @Component({
   selector: 'app-dept-mantenimiento',
   standalone: true,
-  imports: [ RouterOutlet],
+  imports: [ RouterOutlet,RouterLink],
   templateUrl: './dept-mantenimiento.component.html',
   styleUrl: './dept-mantenimiento.component.css'
 })

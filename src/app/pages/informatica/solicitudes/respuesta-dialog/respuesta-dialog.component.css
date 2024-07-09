@@ -1,0 +1,117 @@
+.dialog-container {
+    font-family: 'Roboto', sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dialog-title {
+    background: #f8f9fa;
+    color: #333;
+    padding: 16px 24px;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .dialog-content {
+    padding: 24px;
+  }
+  
+  .request-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 4px;
+  }
+  
+  .summary-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .label {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-right: 8px;
+  }
+  
+  .value {
+    font-size: 0.875rem;
+    color: #212529;
+    font-weight: 500;
+  }
+  
+  .status-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+  }
+  
+  .request-description, .response-area {
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    font-size: 1rem;
+    color: #495057;
+    margin-bottom: 8px;
+  }
+  
+  textarea {
+    width: 350px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 0.875rem;
+    resize: vertical;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 24px;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+  }
+  
+  .btn-cancel, .btn-submit {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-cancel {
+    background: #fff;
+    color: #6c757d;
+    border: 1px solid #ced4da;
+    margin-right: 12px;
+  }
+  
+  .btn-submit {
+    background: #007bff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+  }
+  
+  .btn-submit:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .btn-submit .icon {
+    margin-right: 8px;
+  }
+  
+  .btn-cancel:hover { background: #f8f9fa; }
+  .btn-submit:hover:not(:disabled) { background: #0056b3; }

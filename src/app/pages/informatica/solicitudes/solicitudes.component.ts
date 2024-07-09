@@ -24,6 +24,8 @@ import { Subscription } from 'rxjs';
 
 import {  OnDestroy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RespuestaDialogComponent } from './respuesta-dialog/respuesta-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -52,6 +54,7 @@ interface Departamento {
     MatMenuModule,
     FormsModule,
     MatExpansionModule,
+    
 
 
   ],
@@ -73,12 +76,14 @@ export class SolicitudesComponent implements OnInit, OnDestroy{
   selectedRow: any;
 
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
-  displayedColumns: string[] = ['id_solicitud', 'departamento','solicitudes',  'fecha','tipo', 'estado','prioridad' ,'acciones'];
+  displayedColumns: string[] = ['id_solicitud', 'departamento','solicitudes',  'fecha','tipo', 'estado','prioridad' ,'acciones',
+
+  ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private SolicitudesServiceService: SolicitudesServiceService,private _snackBar: MatSnackBar) { }
+  constructor(private SolicitudesServiceService: SolicitudesServiceService,private _snackBar: MatSnackBar,public dialog: MatDialog,private el: ElementRef) { }
   departamentos: Departamento[] = [];
 
   ngOnInit() {
@@ -222,6 +227,49 @@ console.log(data);
   ngOnDestroy(): void {
     if (this.sseSubscription) {
       this.sseSubscription.unsubscribe();
+    }
+  }
+
+  abrirRespuesta(idSolicitud: string): void {
+    const dialogRef = this.dialog.open(RespuestaDialogComponent, {
+      width: '600px',  // Ajusta el ancho según sea necesario
+      data: { idSolicitud }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El diálogo fue cerrado');
+      // Lógica adicional si es necesario
+    });
+  }
+  getStatusClass() {
+    switch (this.selectedRow.estado.toLowerCase()) {
+      case 'en progreso':
+        return 'status-pending';
+      case 'completado':
+        return 'status-approved';
+      case 'en espera':
+        return 'status-rejected';
+      default:
+        return '';
+    }
+  }
+
+
+
+
+  onTableRowClick(item: any) {
+    this.selectedRow = item;
+    this.scrollIntoView();
+  }
+
+  private scrollIntoView() {
+    try {
+      const element = this.el.nativeElement.querySelector('#detailsContainer');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch (error) {
+      console.error("Error al hacer scroll:", error);
     }
   }
 }

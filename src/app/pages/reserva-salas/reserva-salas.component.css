@@ -1,0 +1,50 @@
+.development-notice {
+    background-color: #f0f0f0;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    max-width: 600px;
+    margin: 50px auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .progress-bar {
+    background-color: #e0e0e0;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .progress {
+    background-color: #4CAF50;
+    width: 75%;
+    height: 100%;
+    animation: progress-animation 2s ease-in-out infinite alternate;
+  }
+  
+  .eta {
+    font-style: italic;
+    margin-top: 20px;
+  }
+  
+  @keyframes progress-animation {
+    0% {
+      width: 50%;
+    }
+    100% {
+      width: 75%;
+    }
+  }
