@@ -1,0 +1,20 @@
+<div class="dialog-container">
+    <h2 class="dialog-title">Responder a la Solicitud #{{data.idSolicitud}}</h2>
+    
+    <div class="dialog-content">
+    
+  
+      <div class="response-area">
+        <h3>Tu respuesta</h3>
+        <textarea [(ngModel)]="respuesta" placeholder="Escribe tu respuesta aquí..." rows="6"></textarea>
+      </div>
+    </div>
+  
+    <div class="dialog-actions">
+      <button class="btn-cancel" (click)="onCancel()">Cancelar</button>
+      <button class="btn-submit" (click)="onSubmit()" [disabled]="!respuesta.trim()">
+        <span class="icon">send</span>
+        Enviar respuesta
+      </button>
+    </div>
+  </div>

@@ -1,12 +1,8 @@
-@if ((asyncTabs | async) === null) {
-    Loading tabs...
-  }
-  
-  <mat-tab-group>
-    @for (tab of asyncTabs | async; track tab) {
-      <mat-tab>
-        <ng-template mat-tab-label>{{tab.label}}</ng-template>
-        {{tab.content}}
-      </mat-tab>
-    }
-  </mat-tab-group>
+<div class="development-notice">
+  <h1>Sitio en Desarrollo</h1>
+  <p>Estamos trabajando para mejorar tu experiencia.</p>
+  <div class="progress-bar">
+    <div class="progress"></div>
+  </div>
+  <p class="eta">Tiempo estimado de finalización: 4 semanas</p>
+</div>

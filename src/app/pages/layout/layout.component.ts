@@ -60,6 +60,7 @@ export class LayoutComponent {
         this.notifications.push(notification);
       });
     }
+    
   }
   logout(): void {
     localStorage.removeItem('ticketData');

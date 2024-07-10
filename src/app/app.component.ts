@@ -23,11 +23,11 @@ import { Socket } from 'socket.io-client';
 
 import { HttpClient } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { FullCalendarModule } from '@fullcalendar/angular'; // still needed for the plugin to work
 
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 
