@@ -56,7 +56,7 @@
 
     <!-- Define column order and display -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="getRowClass(row)" (click)="selectRow(row)"  [class.selected]="selectedRow === row"></tr>
+    <tr mat-row *matRowDef="let item; columns: displayedColumns;" [ngClass]="getRowClass(item)" (click)="selectRow(item)" (click)="onTableRowClick(item)" [class.selected]="selectedRow === item"></tr>
 
     <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>
@@ -130,24 +130,51 @@
 
 
 <br>
-<div *ngIf="selectedRow" style="border: 1px solid #ccc; border-radius: 8px; padding: 16px; background-color: #f9f9f9; font-family: Arial, sans-serif;">
-  <div style="display: flex; justify-content: space-between; align-items: center;">
-    <h3 style="margin-bottom: 10px;">DETALLES DE LA SOLICITUD :: <strong>{{selectedRow.id_solicitud}}</strong></h3>
-    <button mat-raised-button color="warn" (click)="toggleDetails()">Ocultar Detalles</button>
-
-  </div>
-  <br><br>
-
-  <div style="margin-bottom: 20px;">
-    <p><strong>ID:</strong> {{ selectedRow.id_solicitud }}</p>
-    <p><strong>DEPARTAMENTO:</strong> {{ selectedRow.nombre_departamentos }}</p>
-    <p><strong>SOLICITUD:</strong> {{ selectedRow.solicitud }}</p>
-    <p><strong>TIPO:</strong> {{ selectedRow.tipo_solicitud }}</p>
-    <p><strong>ESTADO:</strong> {{ selectedRow.estado }}</p>
-    <p><strong>FECHA:</strong> {{ selectedRow.fecha | date: 'dd/MM/yyyy' }}</p>
-    <p><strong>DESCRIPCIÓN:</strong> {{ selectedRow.descripcion }}</p>
-
-
+<div *ngIf="selectedRow" class="details-container" id="detailsContainer">
+  <div class="header">
+    <h2>Detalles de la Solicitud: <span class="id">{{selectedRow.id_solicitud}}</span></h2>
+    <button mat-icon-button color="primary" (click)="toggleDetails()" aria-label="Cerrar detalles">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
 
+  <mat-divider></mat-divider>
+
+  <div class="content">
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="label">Solicitud:</span>
+        <span class="value">{{ selectedRow.solicitud }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Tipo:</span>
+        <span class="value">{{ selectedRow.tipo_solicitud }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Estado:</span>
+        <span class="value" [ngClass]="getStatusClass()">{{ selectedRow.estado }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Fecha:</span>
+        <span class="value">{{ selectedRow.fecha | date: 'dd/MM/yyyy' }}</span>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="description">
+      <h3>Descripción</h3>
+      <p>{{ selectedRow.descripcion }}</p>
+    </div>
+
+    <div class="description">
+      <h3>Respuesta/Informatico</h3>
+      <p *ngIf="selectedRow.respuesta; else empty">{{ selectedRow.respuesta }}</p>
+      <ng-template #empty>No hay respuesta todavia</ng-template>
+    </div>
+    
+
+
+  </div>
 </div>
+

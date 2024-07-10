@@ -19,6 +19,10 @@ export class SolicitudesServiceService {
     return this.HttpClient.post<any>(`${this.apiUrl}/solicitudes/insertar`, formData);
   }
 
+  putRespuestaSolicitud(solicitudId: number, respuesta: string): Observable<any> {
+    return this.HttpClient.put<any>(`${this.apiUrl}/solicitudes/respuesta/${solicitudId}`, { respuesta });
+  }
+
   getDepartamentos(): Observable<any[]> {
     return this.HttpClient.get<any[]>(`${this.apiUrl}/solicitudes/departamentos`);
   }
@@ -29,6 +33,10 @@ export class SolicitudesServiceService {
 
   getSolicitudesPorDepartamento(idDepartamento: number): Observable<any[]> {
     return this.HttpClient.get<any[]>(`${this.apiUrl}/solicitudes/solicidudesDepartamento/` + idDepartamento);
+  }
+
+  getRespuetaSolicitud(solicitudId: number): Observable<any> {
+    return this.HttpClient.get<any>(`${this.apiUrl}/solicitudes/respuesta/${solicitudId}`);
   }
 
   postSolicitudCompras(formData: any): Observable<any> {

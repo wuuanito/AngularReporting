@@ -64,27 +64,36 @@ interface Departamento {
 export class SolicitudesComponent implements OnInit, OnDestroy{
   sseSubscription!: Subscription; // inicialización en el constructor
 
+  solicitud?: string;
+  tipo_solicitud?: string;
+  fecha?: Date;
+  estado?: string;
+  prioridad?: string;
+  descripcion?: string;
+  step = 0;
   formData = {
-    id_solicitud: '', // inicializado en null
+
     solicitud: '',
     tipo_solicitud: '',
-    fecha: this.getCurrentDate(), // Inicializando con la fecha actual
+    fecha: this.getCurrentDate(),
     estado: 'En espera',
+    prioridad: '',
     descripcion: '',
-    id_departamento: '' // inicializado en null
+    id_departamento: '35'
   };
-  selectedRow: any;
-
+  
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
   displayedColumns: string[] = ['id_solicitud', 'departamento','solicitudes',  'fecha','tipo', 'estado','prioridad' ,'acciones',
 
   ];
+  selectedRow: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private SolicitudesServiceService: SolicitudesServiceService,private _snackBar: MatSnackBar,public dialog: MatDialog,private el: ElementRef) { }
   departamentos: Departamento[] = [];
+ 
 
   ngOnInit() {
     this.loadData();
@@ -99,17 +108,14 @@ export class SolicitudesComponent implements OnInit, OnDestroy{
         console.error('Error en SSE:', error);
       }
     );
+ 
 
   }
-  selectRow(row: any) {
-    this.selectedRow = row;
-    // Verifica si el estado del almacén está presente en la fila seleccionada
-    if ('estado_almacen' in row) {
-      this.selectedRow.estado_almacen = row.estado_almacen;
-    } else {
-      // Si no está presente, puedes asignar un valor predeterminado o dejarlo vacío según tu lógica
-      this.selectedRow.estado_almacen = 'No disponible';
-    }
+
+ 
+
+  setStep(index: number) {
+    this.step = index;
   }
 
   loadData() {
@@ -119,9 +125,7 @@ export class SolicitudesComponent implements OnInit, OnDestroy{
       this.dataSource.sort = this.sort;
     });
   }
-  toggleDetails() {
-    this.selectedRow = null; // Esto oculta los detalles al hacer clic en "Ocultar Detalles"
-  }
+ 
   getCurrentDate(): string {
     const today = new Date();
     const year = today.getFullYear();
@@ -154,14 +158,38 @@ export class SolicitudesComponent implements OnInit, OnDestroy{
   }
 
   submitForm(form: NgForm) {
-    this.SolicitudesServiceService.postSolicitud(this.formData).subscribe(data => {
+    const formData = {
+      solicitud: this.solicitud,
+      tipo_solicitud: this.tipo_solicitud,
+      fecha: this.getCurrentDate(),
+      estado: 'En espera',
+      prioridad: this.prioridad,
+      descripcion: this.descripcion,
+      id_departamento: 35 // Cambia esto según tu lógica para obtener el ID del departamento
+    };
+
+    this.SolicitudesServiceService.postSolicitudCompras(formData).subscribe(data => {
+      console.log('Solicitud enviada:', data);
+
       this.loadData();
       form.resetForm();
       window.location.reload(); // Recargar la página
     });
   }
 
-
+  selectRow(row: any) {
+    this.selectedRow = row;
+    // Verifica si el estado del almacén está presente en la fila seleccionada
+    if ('estado_almacen' in row) {
+      this.selectedRow.estado_almacen = row.estado_almacen;
+    } else {
+      // Si no está presente, puedes asignar un valor predeterminado o dejarlo vacío según tu lógica
+      this.selectedRow.estado_almacen = 'No disponible';
+    }
+  }
+  toggleDetails() {
+    this.selectedRow = null; // Esto oculta los detalles al hacer clic en "Ocultar Detalles"
+  }
   getDepartamentos() {
     this.SolicitudesServiceService.getDepartamentos().subscribe(
       (data: any[]) => {
@@ -230,9 +258,11 @@ console.log(data);
     }
   }
 
+
+
   abrirRespuesta(idSolicitud: string): void {
     const dialogRef = this.dialog.open(RespuestaDialogComponent, {
-      width: '600px',  // Ajusta el ancho según sea necesario
+      width: '700px',  // Ajusta el ancho según sea necesario
       data: { idSolicitud }
     });
 

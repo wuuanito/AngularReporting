@@ -1,11 +1,9 @@
-
 <br>
 <h4>SOLICITUDES</h4>
 <br>
 <mat-form-field>
   <mat-label>Búsqueda...</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Solicitud" #input>
-
 </mat-form-field>
 <br>
 <div class="mat-elevation-z8">
@@ -28,7 +26,7 @@
       <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
       <td mat-cell *matCellDef="let row">
         <button mat-icon-button color="primary" [matMenuTriggerFor]="menu">
-          <mat-icon>sync</mat-icon> <!-- Icono para cambiar estado -->
+          <mat-icon>sync</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="changeState(row, 'En progreso')">En progreso</button>
@@ -37,7 +35,6 @@
         </mat-menu>
       </td>
     </ng-container>
-
 
     <!-- Solicitud Column -->
     <ng-container matColumnDef="solicitudes">
@@ -73,7 +70,6 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> DESCRIPCIÓN </th>
       <td mat-cell *matCellDef="let row"> {{row.descripcion}} </td>
     </ng-container>
-  
 
     <!-- Define column order and display -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -89,64 +85,69 @@
   <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 </div>
 
-
 <br><br>
 
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      Nueva Solicitud
-    </mat-panel-title>
-  </mat-expansion-panel-header>
-  <div class="form-container">
-    <form #form="ngForm" (ngSubmit)="submitForm(form)" class="form" novalidate>
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Solicitud
+      </mat-panel-title>
+      <mat-panel-description>
+        Ingresa los detalles de la solicitud
+        <mat-icon>assignment</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
+    <form #solicitudForm="ngForm" (ngSubmit)="submitForm(solicitudForm)" class="solicitud-form">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Solicitud</mat-label>
-        <input matInput name="solicitud" [(ngModel)]="formData.solicitud" required #solicitud="ngModel">
-        <mat-error *ngIf="solicitud.invalid && (solicitud.dirty || solicitud.touched)">
-          Solicitud es requerida
+        <input matInput name="solicitud" [(ngModel)]="solicitud" required>
+        <mat-error *ngIf="solicitudForm.controls['solicitud']?.invalid && solicitudForm.controls['solicitud']?.touched">
+          El campo Solicitud es requerido
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Tipo de Solicitud</mat-label>
-        <mat-select name="tipo_solicitud" [(ngModel)]="formData.tipo_solicitud" required>
-          <mat-option value="desarrollo">Desarrollo</mat-option>
-          <mat-option value="error">Error</mat-option>
-          <mat-option value="compra">Compra</mat-option>
+        <mat-label>Tipo de solicitud</mat-label>
+        <mat-select name="tipo_solicitud" [(ngModel)]="tipo_solicitud" required>
+          <mat-option value="Desarrollo">Desarrollo</mat-option>
+          <mat-option value="Error">Error</mat-option>
+          <mat-option value="Compra">Compra</mat-option>
         </mat-select>
+        <mat-error *ngIf="solicitudForm.controls['tipo_solicitud']?.invalid && solicitudForm.controls['tipo_solicitud']?.touched">
+          El campo Tipo de solicitud es requerido
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Fecha</mat-label>
-        <input matInput type="date" name="fecha" [(ngModel)]="formData.fecha" required readonly>
+        <mat-label>Prioridad</mat-label>
+        <mat-select name="prioridad" [(ngModel)]="prioridad" required>
+          <mat-option value="Baja">Baja</mat-option>
+          <mat-option value="Media">Media</mat-option>
+          <mat-option value="Alta">Alta</mat-option>
+        </mat-select>
+        <mat-error *ngIf="solicitudForm.controls['prioridad']?.invalid && solicitudForm.controls['prioridad']?.touched">
+          El campo Prioridad es requerido
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="full-width" style="width: 100%">
+      <mat-form-field appearance="fill" class="full-width">
         <mat-label>Descripción</mat-label>
-        <textarea matInput name="descripcion" [(ngModel)]="formData.descripcion" required maxlength="255" rows="5" style="width: 100%"></textarea>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Departamento</mat-label>
-        <mat-select name="departamento" [(ngModel)]="formData.id_departamento" required>
-          <mat-option *ngFor="let departamento of departamentos" [value]="departamento.id_departamentos">
-            {{ departamento.nombre_departamentos }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.controls['departamento'].invalid && (form.controls['departamento'].dirty || form.controls['departamento'].touched)">
-          Departamento es requerido
+        <textarea matInput name="descripcion" [(ngModel)]="descripcion" required></textarea>
+        <mat-error *ngIf="solicitudForm.controls['descripcion']?.invalid && solicitudForm.controls['descripcion']?.touched">
+          El campo Descripción es requerido
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" class="full-width">Guardar Solicitud</button>
+      <mat-action-row class="action-row">
+        <button mat-button color="primary" type="submit" [disabled]="solicitudForm.invalid">Crear Solicitud</button>
+      </mat-action-row>
     </form>
-  </div>
-</mat-expansion-panel>
+  </mat-expansion-panel>
+</mat-accordion>
 <br>
 <hr>
-
 
 <div *ngIf="selectedRow" class="details-container" id="detailsContainer">
   <div class="header">
@@ -187,6 +188,12 @@
     <div class="description">
       <h3>Descripción</h3>
       <p>{{ selectedRow.descripcion }}</p>
+    </div>
+
+    <div class="description">
+      <h3>Respuesta/Informatico</h3>
+      <p *ngIf="selectedRow.respuesta; else empty">{{ selectedRow.respuesta }}</p>
+      <ng-template #empty>No hay respuesta todavia</ng-template>
     </div>
 
     <div class="actions">

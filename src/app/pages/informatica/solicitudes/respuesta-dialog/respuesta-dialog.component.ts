@@ -5,6 +5,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { SolicitudesServiceService } from '../../../../core/services/solicitudes-service.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'; // Importa MatSnackBarModule
+
 
 export interface DialogData {
   idSolicitud: string;
@@ -28,7 +31,10 @@ export class RespuestaDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<RespuestaDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private SolicitudesServiceService: SolicitudesServiceService,
+    private snackBar: MatSnackBar, // Inyecta MatSnackBar
+
   ) {
     console.log('ID de solicitud recibido:', this.data.idSolicitud);
   }
@@ -45,10 +51,22 @@ export class RespuestaDialogComponent implements OnInit {
   onSubmit(): void {
     if (this.respuesta.trim()) {
       console.log(`Respuesta para la solicitud ${this.data.idSolicitud}: ${this.respuesta}`);
-      // Aquí puedes agregar la lógica para enviar la respuesta al servidor
-      this.dialogRef.close(this.respuesta);
+      this.SolicitudesServiceService.putRespuestaSolicitud(Number(this.data.idSolicitud), this.respuesta).subscribe(
+        (data) => {
+          this.snackBar.open('Respuesta enviada correctamente', 'Cerrar', {
+            duration: 3000, // Duración en milisegundos
+          });
+
+          this.dialogRef.close();
+          window.location.reload();
+        },
+        (error) => {
+          this.snackBar.open('Error al enviar la respuesta', 'Cerrar', {
+            duration: 3000, // Duración en milisegundos
+          });
+        }
+      );
     }
   }
-
 
 }

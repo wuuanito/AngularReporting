@@ -1,104 +1,366 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  width: 100%; /* Cambiamos el ancho máximo a 100% */
-  padding: 1px;
-  box-sizing: border-box; /* Incluimos el padding en el ancho total */
-}
-
-h3 {
-  background-color: #f0f0f0;
-  padding: 10px;
-  margin-top: 0;
-}
-
-h2 {
+.rnp-connect-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
+  line-height: 1.6;
 }
 
-.carousel-container {
-  background-color: #fff;
-  border-radius: 8px;
-  border: 2px solid #28a745; /* Marco verde */
-
-  overflow: hidden;
-  margin-bottom: 20px;
-  width: 100%; /* Ancho del carrusel al 100% */
+.hero-section {
+  background: linear-gradient(135deg, #00a86b 0%, #00d084 100%);
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 3rem;
 }
 
-.carousel-slide {
-  padding: 20px;
-  display: none;
+.hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
-.carousel-slide.active {
-  display: block;
+.hero-subtitle {
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.carousel-controls {
-  margin-top: 10px;
+.intro-section {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  padding: 4rem 2rem;
+  background-color: #f0f7f4;
+}
+
+.intro-content {
+  flex: 1;
+}
+
+.intro-content h2 {
+  font-size: 2.5rem;
+  color: #00a86b;
+  margin-bottom: 1rem;
+}
+
+.intro-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.cta-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.cta-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.cta-button.primary {
+  background-color: #00a86b;
+  color: white;
+}
+
+.cta-button.primary:hover {
+  background-color: #008c59;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cta-button.secondary {
+  background-color: white;
+  color: #00a86b;
+  border: 2px solid #00a86b;
+}
+
+.cta-button.secondary:hover {
+  background-color: #00a86b;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.intro-image {
+  flex: 1;
+}
+
+.factory-image {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.contact-section {
+  padding: 4rem 2rem;
+  background-color: #ffffff;
   text-align: center;
 }
 
-button.mat-icon-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5em;
-  color: #333;
+.contact-section h2 {
+  font-size: 2.5rem;
+  color: #00a86b;
+  margin-bottom: 1rem;
 }
 
-button.mat-icon-button:hover {
-  color: #555;
-}
-
-.mat-tab-group {
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  overflow: hidden;
-  width: 100%; /* Ancho del grupo de pestañas al 100% */
-}
-
-.mat-tab-label {
-  color: #333;
-}
-
-.mat-tab-label-active {
-  background-color: #fff;
-  color: #333;
-}
-section {
-  display: table;
-}
-
-.example-label {
-  display: table-cell;
-  font-size: 14px;
-  margin-left: 8px;
-  min-width: 120px;
-}
-
-.example-button-row {
-  display: table-cell;
+.contact-section > p {
+  font-size: 1.1rem;
   max-width: 600px;
+  margin: 0 auto 2rem;
 }
 
-.example-button-row .mat-mdc-button-base {
-  margin: 8px 8px 8px 0;
-}
-
-.example-flex-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.example-button-container {
+.contact-info {
   display: flex;
   justify-content: center;
-  width: 120px;
+  gap: 2rem;
+}
+
+.contact-card {
+  background-color: #f0f7f4;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-card i {
+  font-size: 2.5rem;
+  color: #00a86b;
+  margin-bottom: 1rem;
+}
+
+.contact-card h3 {
+  font-size: 1.3rem;
+  color: #00a86b;
+  margin-bottom: 1rem;
+}
+
+.contact-card a,
+.contact-card p {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.contact-card a:hover {
+  color: #00a86b;
+}
+
+@media (max-width: 768px) {
+  .intro-section {
+    flex-direction: column;
+  }
+  
+  .cta-group {
+    flex-direction: column;
+  }
+  
+  .contact-info {
+    flex-direction: column;
+  }
+}
+.features-section {
+  background-color: #f9f9f9;
+  padding: 4rem 2rem;
+  margin-bottom: 4rem;
+}
+
+.features-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #00a86b;
+  margin-bottom: 3rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.feature-card i {
+  font-size: 3rem;
+  color: #00a86b;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #00a86b;
+}
+
+.news-section {
+  padding: 4rem 2rem;
+}
+
+.news-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #00a86b;
+  margin-bottom: 3rem;
+}
+
+.news-carousel {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding-bottom: 2rem;
+}
+
+.news-item {
+  flex: 0 0 300px;
+  background-color: #f0f7f4;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.news-item h3 {
+  font-size: 1.3rem;
+  color: #00a86b;
+  margin-bottom: 1rem;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #00a86b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .intro-section {
+    flex-direction: column;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .intro-content h2 {
+    font-size: 2rem;
+  }
+}
+/* Añade esto al final de tu archivo CSS existente */
+
+.version-notes {
+  padding: 4rem 2rem;
+  background-color: #f0f7f4;
+}
+
+.version-notes h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #00a86b;
+  margin-bottom: 2rem;
+}
+
+.version-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.version-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #00a86b;
+  padding-bottom: 1rem;
+}
+
+.version-header h3 {
+  font-size: 1.8rem;
+  color: #00a86b;
+}
+
+.release-date {
+  font-size: 1rem;
+  color: #666;
+}
+
+.version-features {
+  list-style-type: none;
+  padding: 0;
+}
+
+.version-features li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.version-features i {
+  color: #00a86b;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+.version-features strong {
+  margin-right: 0.5rem;
+}
+
+.previous-versions {
+  margin-top: 2rem;
+  text-align: right;
+}
+
+.version-link {
+  color: #00a86b;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.version-link:hover {
+  color: #008c59;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .version-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .release-date {
+    margin-top: 0.5rem;
+  }
 }

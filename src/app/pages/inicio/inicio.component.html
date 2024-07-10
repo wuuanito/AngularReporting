@@ -1,144 +1,104 @@
-<title>Riojanature Pharma</title>
-<style>
-  body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    color: #01931c;
-    background-color: #f8f8f8;
-  }
-  header, footer {
-    background-color: #01931c;
-    color: #fff;
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header a, footer a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-  }
-  header a:hover, footer a:hover {
-    text-decoration: underline;
-  }
-  main {
-    padding: 4px;
-    background-color: #ffffff;
-    flex-grow: 1;
-  }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 4px 0;
-    margin-top: 20px; /* Añadido para separar del header */
-  }
-  .hero h2 {
-    font-size: 36px;
-    color: #01931c;
-    margin-bottom: 10px;
-  }
-  .hero p {
-    font-size: 18px;
-    color: #666;
-    max-width: 800px;
-  }
-  .buttons {
-    margin-top: 1px;
-  }
-  .button {
-    display: inline-block;
-    padding: 12px 24px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 10px 5px;
-    transition: background-color 0.3s ease;
-  }
-  .button-primary {
-    background-color: #004d40;
-    color: #fff;
-  }
-  .button-primary:hover {
-    background-color: #01931c;
-  }
-  .button-secondary {
-    border: 2px solid #01931c;
-    color: #01931c;
-  }
-  .button-secondary:hover {
-    background-color: #01931c;
-    color: #fff;
-  }
-  .image img {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-  }
-  footer {
-    font-size: 14px;
-  }
-  @media (min-width: 768px) {
-    .hero {
-      flex-direction: row;
-      text-align: left;
-    }
-    .hero > div {
-      flex: 1;
-    }
-    .hero h2 {
-      font-size: 48px;
-    }
-  }
-</style>
-<body>
-<header>
-<div class="container">
-  <a style="display: flex; align-items: center; justify-content: center; text-decoration: none;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-white">
-      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
-      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
-    </svg>
-    <h3 style="background-color: #01931c; margin-left: 8px; text-align: center;" class="text-lg font-semibold text-white">Rioja Nature Pharma</h3>
-  </a>
-</div>
-</header>
-<main>
-<div class="container">
-  <section class="hero">
-    <div>
-      <h2>Bienvenido a RNP Connect</h2>
-      <p>¡Nos alegra darte la bienvenida a RNP Connect. Estamos encantados de presentar esta herramienta. RNP Connect ha sido diseñada para poner en contacto los distintos departamentos de la empresa en tiempo real.</p>
-      <p>Gracias por unirte a RNP Connect. ¡Esperamos que disfrutes de todas las ventajas y funcionalidades que ofrecemos!</p>
-      <div class="buttons">
-        <p>Si tienes alguna pregunta o necesitas ayuda, nuestro equipo de soporte está aquí para asistirte, Estamos comprometidos en ofrecerte la mejor experiencia posible.</p>
-        <hr>
-        <p>Correo Electrónico: rps&#64;naturepharma.es<br> Correo Electrónico: desarrollo&#64;naturepharma.es<br> Teléfono: Ext. 163 y ext. 197</p>
-        <p><a href="mailto:desarrollos.naturepharma@naturepharma.es" class="button button-secondary">Contacto</a></p>
+<div class="rnp-connect-container">
+  <header class="hero-section">
+    <h1 class="hero-title">Bienvenido a RNP Connect</h1>
+    <p class="hero-subtitle">La plataforma que revoluciona la comunicación empresarial</p>
+  </header>
+
+  <section class="intro-section">
+    <div class="intro-content">
+      <h2>Conectando el futuro de Nature Pharma</h2>
+      <p>RNP Connect es la herramienta definitiva para impulsar la innovación y la colaboración en tiempo real dentro de tu empresa. Descubre cómo podemos transformar tu forma de trabajar, optimizando la comunicación entre departamentos y potenciando la eficiencia operativa.</p>
+      
+    </div>
+    <div class="intro-image">
+      <img src="assets/fabrica.png" alt="Fábrica de Nature Pharma Rioja" class="factory-image">
+    </div>
+  </section>
+  
+  <section class="contact-section">
+    <h2>Contacto</h2>
+    <p>¿Tienes preguntas o necesitas asistencia? Nuestro equipo está aquí para ayudarte.</p>
+    <div class="contact-info">
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <h3>Correo Electrónico</h3>
+        <a href="mailto:rps@;naturepharma.es">rps&#64;naturepharma.es</a>
+        <a href="mailto:desarrollos@naturepharma.es">desarrollos&#64;naturepharma.es</a>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-phone-alt"></i>
+        <h3>Teléfono</h3>
+        <p>Ext. 197</p>
+        <p>Ext. 163</p>
       </div>
     </div>
-    <div class="image" style="margin-left: 80px;">
-      <img src="assets/fabrica.png" alt="Fábrica de Riojanature Pharma">
+  </section>
+
+  <section class="features-section">
+    <h2>Características Destacadas</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="fas fa-comments"></i>
+        <h3>Comunicación en Tiempo Real</h3>
+        <p>Chats, videollamadas y colaboración instantánea entre departamentos.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-project-diagram"></i>
+        <h3>Gestión de Proyectos Avanzada</h3>
+        <p>Herramientas intuitivas para planificar, ejecutar y monitorear proyectos.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Análisis de Datos Inteligente</h3>
+        <p>Insights poderosos para tomar decisiones informadas y estratégicas.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Seguridad de Nivel Empresarial</h3>
+        <p>Protección avanzada para tus datos y comunicaciones más sensibles.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="news-section">
+    <h2>Novedades de RNP Connect</h2>
+    <div class="news-carousel">
+      <div class="news-item">
+        <h3>Integración con IA</h3>
+        <p>Ahora con asistentes virtuales impulsados por IA para optimizar tus flujos de trabajo.</p>
+      </div>
+      <div class="news-item">
+        <h3>Análisis Predictivo</h3>
+        <p>Anticipa tendencias y optimiza recursos con nuestro nuevo módulo de análisis predictivo.</p>
+      </div>
+    </div>
+  </section>
+  <section class="version-notes">
+    <h2>Notas de la Versión</h2>
+    <div class="version-card">
+      <div class="version-header">
+        <h3>Versión 0.7.2</h3>
+        <span class="release-date">Lanzada el 10 de julio, 2024</span>
+      </div>
+      <ul class="version-features">
+        <li>
+          <i class="fas fa-star"></i>
+          <strong>Nuevo Dashboard Personalizable:</strong> Ahora puedes customizar tu página de inicio con los widgets que más uses.
+        </li>
+        <li>
+          <i class="fas fa-star"></i>
+          <strong>Nuevo feature de Solicitudes:</strong> Ahora el responsable de la solicitud podra responder sobre el estado de la misma.
+        </li>
+        <li>
+          <i class="fas fa-bolt"></i>
+          <strong>Mejoras de Rendimiento:</strong> Hemos optimizado la carga de datos para una experiencia más rápida.
+        </li>
+        <li>
+          <i class="fas fa-bug"></i>
+          <strong>Correcciones:</strong> Solucionados problemas menores de UI en la vista móvil.
+        </li>
+      </ul>
+      
     </div>
   </section>
 </div>
-</main>
-<footer>
-<div class="container">
-  <p>© 2024 Riojanature Pharma. Todos los derechos reservados.</p>
-  <nav>
-    <a href="#">Términos de Servicio</a>
-    <hr>
-    <a href="#">Privacidad</a>
-  </nav>
-</div>
-</footer>
-</body>

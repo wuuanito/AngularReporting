@@ -71,7 +71,7 @@ export class SolicitudesLogisticaComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private SolicitudesServiceService: SolicitudesServiceService) {
+  constructor(private SolicitudesServiceService: SolicitudesServiceService,private el: ElementRef) {
   }
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
 
@@ -180,6 +180,33 @@ export class SolicitudesLogisticaComponent {
     }
     toggleDetails() {
       this.selectedRow = null; // Esto oculta los detalles al hacer clic en "Ocultar Detalles"
+    }
+    getStatusClass() {
+      switch (this.selectedRow.estado.toLowerCase()) {
+        case 'en progreso':
+          return 'status-pending';
+        case 'completado':
+          return 'status-approved';
+        case 'en espera':
+          return 'status-rejected';
+        default:
+          return '';
+      }
+    }
+    onTableRowClick(item: any) {
+      this.selectedRow = item;
+      this.scrollIntoView();
+    }
+  
+    private scrollIntoView() {
+      try {
+        const element = this.el.nativeElement.querySelector('#detailsContainer');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } catch (error) {
+        console.error("Error al hacer scroll:", error);
+      }
     }
   }
 
