@@ -61,6 +61,7 @@ import { DeptInternacionalComponent } from './pages/internacional/dept-internaci
 import { rolInternacionalGuard } from './core/guard/rol-internacional.guard';
 import { InicioInternacionalComponent } from './pages/internacional/inicio-internacional/inicio-internacional.component';
 import { SolicitudesInternacionalComponent } from './pages/internacional/solicitudes-internacional/solicitudes-internacional.component';
+import { ControlAccesoComponent } from './pages/control-acceso/control-acceso.component';
 export const routes: Routes = [
   {
     path: '',
@@ -70,6 +71,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'control-acceso',
+    component: ControlAccesoComponent,
   },
   {
     path: 'layout',
@@ -313,6 +318,7 @@ component:SolicitudesInternacionalComponent
 
 
       },
+ 
       {
         path:'muestras',
         component: MuestrasOficinaTecnicaComponent,

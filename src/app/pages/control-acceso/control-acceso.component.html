@@ -1,0 +1,28 @@
+<div class="container-fluid mt-3">
+    <h2 class="mb-3">UGC-11.01 CONTROL ACCESO PERSONAL EXTERNO v.01</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-success">
+          <tr>
+            <th>Fecha</th>
+            <th>Nombre y apellidos</th>
+            <th>Empresa</th>
+            <th>Hora Entrada</th>
+            <th>Hora Salida</th>
+            <th>Personal de RNPH que autoriza la entrada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of entries">
+            <td><input [(ngModel)]="entry.fecha" type="date" class="form-control"></td>
+            <td><input [(ngModel)]="entry.nombreApellidos" type="text" class="form-control"></td>
+            <td><input [(ngModel)]="entry.empresa" type="text" class="form-control"></td>
+            <td><input [(ngModel)]="entry.horaEntrada" type="time" class="form-control"></td>
+            <td><input [(ngModel)]="entry.horaSalida" type="time" class="form-control"></td>
+            <td><input [(ngModel)]="entry.personalAutoriza" type="text" class="form-control"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button (click)="addEntry()" class="btn btn-success">Add Entry</button>
+  </div>

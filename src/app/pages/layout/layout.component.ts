@@ -21,14 +21,34 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { NotificacionService } from '../../core/services/notificacion.service';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,MatButtonModule, MatMenuModule, MatIconModule,CommonModule, MatButtonModule, MatIconModule, MatMenuModule, CommonModule,FormsModule,MatInputModule,MatRippleModule,MatFormFieldModule,MatTooltipModule,MatSelectModule],
+  imports: [MatExpansionModule,MatToolbarModule,RouterOutlet,RouterLink,MatButtonModule, MatMenuModule, MatIconModule,CommonModule, MatButtonModule, MatIconModule, MatMenuModule, CommonModule,FormsModule,MatInputModule,MatRippleModule,MatFormFieldModule,MatTooltipModule,MatSelectModule,MatSidenavModule],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+  styleUrl: './layout.component.css',
+  animations: [ trigger('desplegar', [
+      state('visible', style({
+        height: '*',
+        opacity: 1,
+        overflow: 'hidden',
+      })),
+      state('invisible', style({
+        height: '0',
+        opacity: 0,
+        overflow: 'hidden',
+      })),
+      transition('visible <=> invisible', [
+        animate('300ms ease-in-out'),
+      ]),
+    ])
+  ]
 })
 export class LayoutComponent {
   notifications: string[] = [];
@@ -49,6 +69,18 @@ export class LayoutComponent {
       this.loggedData = JSON.parse(localData);
     }
 }
+mostrarDepartamentos: boolean = false;
+departamentosAbiertos = false;
+
+  toggleDepartamentos() {
+    this.departamentosAbiertos = !this.departamentosAbiertos;
+  }
+
+  solicitudesAbiertas = false;
+
+  toggleSolicitudes() {
+    this.solicitudesAbiertas = !this.solicitudesAbiertas;
+  }
   ngOnInit(): void {
     const userDataString = localStorage.getItem('ticketData');
 
