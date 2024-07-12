@@ -61,78 +61,77 @@
       <div class="relative">
         <h5 class="text-gray-900 dark:text-black px-2 cursor-pointer flex items-center" (click)="toggleDepartamentos()">
           DEPARTAMENTOS
-          <mat-icon class="ml-2 text-sm">{{ departamentosAbiertos ? 'expand_less' : 'expand_more' }}</mat-icon>
         </h5>
-        <ul class="space-y-2 font-medium mt-2 overflow-hidden transition-all duration-300 ease-in-out" 
-            [ngClass]="{'max-h-0': !departamentosAbiertos, 'max-h-[1000px]': departamentosAbiertos}">
-          <li>
-            <a routerLink="/layout/departamento/dept-informatica/inicio-informatica" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon class="text-gray-500 dark:text-gray-400">computer</mat-icon>
+        <mat-nav-list class="space-y-2 font-medium mt-2" [ngClass]="{'hidden': !departamentosAbiertos}">
+          <mat-list-item>
+            <a mat-list-item routerLink="/layout/departamento/dept-informatica/inicio-informatica" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <mat-icon mat-list-icon>computer</mat-icon>
               <span class="ms-3">INFORMATICA</span>
             </a>
-          </li>
-          <li>
-            <a routerLink="/layout/departamento/dept-compras/inicio-compras" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon class="text-gray-500 dark:text-gray-400">shopping_cart</mat-icon>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-list-item routerLink="/layout/departamento/dept-compras/inicio-compras" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <mat-icon mat-list-icon>shopping_cart</mat-icon>
               <span class="ms-3">COMPRAS</span>
             </a>
-          </li>
-          <li>
-            <a routerLink="/layout/departamento/dept-administracion/inicio-administracion" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon class="text-gray-500 dark:text-gray-400">admin_panel_settings</mat-icon>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-list-item routerLink="/layout/departamento/dept-administracion/inicio-administracion" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <mat-icon mat-list-icon>admin_panel_settings</mat-icon>
               <span class="ms-3">ADMINISTRACION</span>
             </a>
-          </li>
-          <li>
-            <a routerLink="/layout/departamento/dept-laboratorio/inicio-laboratorio" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon class="text-gray-500 dark:text-gray-400">science</mat-icon>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-list-item routerLink="/layout/departamento/dept-laboratorio/inicio-laboratorio" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <mat-icon mat-list-icon>science</mat-icon>
               <span class="ms-3">CALIDAD/LABORATORIO</span>
             </a>
-          </li>
-          <li>
-            <a routerLink="/layout/departamento/dept-produccion/inicio-produccion" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon class="text-gray-500 dark:text-gray-400">factory</mat-icon>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-list-item routerLink="/layout/departamento/dept-produccion/inicio-produccion" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <mat-icon mat-list-icon>factory</mat-icon>
               <span class="ms-3">PRODUCCIÓN</span>
             </a>
-          </li>
-          <li>
-            <a routerLink="/layout/departamento/dept-oficina-tecnica/inicio-oficina-tecnica" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon class="text-gray-500 dark:text-gray-400">engineering</mat-icon>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-list-item routerLink="/layout/departamento/dept-oficina-tecnica/inicio-oficina-tecnica" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <mat-icon mat-list-icon>engineering</mat-icon>
               <span class="ms-3">OFICINA TÉCNICA</span>
             </a>
-          </li>
-          <li>
-            <a routerLink="/layout/departamento/dept-rrhh/inicio-rrhh" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon class="text-gray-500 dark:text-gray-400">group</mat-icon>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-list-item routerLink="/layout/departamento/dept-rrhh/inicio-rrhh" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <mat-icon mat-list-icon>group</mat-icon>
               <span class="ms-3">RRHH</span>
             </a>
-          </li>
-          <li>
-            <a routerLink="/layout/departamento/dept-mantenimiento/inicio-mantenimiento" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon class="text-gray-500 dark:text-gray-400">build</mat-icon>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-list-item routerLink="/layout/departamento/dept-mantenimiento/inicio-mantenimiento" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <mat-icon mat-list-icon>build</mat-icon>
               <span class="ms-3">MANTENIMIENTO</span>
             </a>
-          </li>
-          <li>
-            <a routerLink="/layout/departamento/dept-gerencia/inicio-gerencia" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon class="text-gray-500 dark:text-gray-400">business_center</mat-icon>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-list-item routerLink="/layout/departamento/dept-gerencia/inicio-gerencia" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <mat-icon mat-list-icon>business_center</mat-icon>
               <span class="ms-3">GERENCIA</span>
             </a>
-          </li>
-          <li>
-            <a routerLink="/layout/departamento/dept-logistica/inicio-logistica" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon class="text-gray-500 dark:text-gray-400">local_shipping</mat-icon>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-list-item routerLink="/layout/departamento/dept-logistica/inicio-logistica" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <mat-icon mat-list-icon>local_shipping</mat-icon>
               <span class="ms-3">LOGÍSTICA</span>
             </a>
-          </li>
-          <li>
-            <a routerLink="/layout/departamento/dept-internacional/inicio-internacional" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              <mat-icon class="text-gray-500 dark:text-gray-400">public</mat-icon>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-list-item routerLink="/layout/departamento/dept-internacional/inicio-internacional" class="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <mat-icon mat-list-icon>public</mat-icon>
               <span class="ms-3">INTERNACIONAL</span>
             </a>
-          </li>
-        </ul>
+          </mat-list-item>
+        </mat-nav-list>
       </div>
+      
       <hr class="my-4">
       <!-- Sección de solicitudes -->
       <div class="relative">

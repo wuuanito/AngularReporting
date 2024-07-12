@@ -25,12 +25,13 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
 
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [MatExpansionModule,MatToolbarModule,RouterOutlet,RouterLink,MatButtonModule, MatMenuModule, MatIconModule,CommonModule, MatButtonModule, MatIconModule, MatMenuModule, CommonModule,FormsModule,MatInputModule,MatRippleModule,MatFormFieldModule,MatTooltipModule,MatSelectModule,MatSidenavModule],
+  imports: [MatListModule,MatExpansionModule,MatToolbarModule,RouterOutlet,RouterLink,MatButtonModule, MatMenuModule, MatIconModule,CommonModule, MatButtonModule, MatIconModule, MatMenuModule, CommonModule,FormsModule,MatInputModule,MatRippleModule,MatFormFieldModule,MatTooltipModule,MatSelectModule,MatSidenavModule],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
   animations: [ trigger('desplegar', [
